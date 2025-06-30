@@ -1,9 +1,12 @@
 import { useAuth } from '../hooks/useAuth';
+import { useCart } from '../hooks/useCart';
 import { Button } from '../components/ui';
 import { ShoppingCart, User, Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function HomePage() {
   const { user, logout } = useAuth();
+  const { getTotalItems } = useCart();
 
   const handleLogout = async () => {
     try {
@@ -39,9 +42,16 @@ export function HomePage() {
 
             {/* User Actions */}
             <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-400 hover:text-gray-500">
-                <ShoppingCart className="h-6 w-6" />
-              </button>
+              <Link to="/cart" className="relative">
+                <button className="p-2 text-gray-400 hover:text-gray-500">
+                  <ShoppingCart className="h-6 w-6" />
+                  {getTotalItems() > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                      {getTotalItems()}
+                    </span>
+                  )}
+                </button>
+              </Link>
               
               {user ? (
                 <div className="flex items-center space-x-3">
@@ -60,9 +70,11 @@ export function HomePage() {
                   </Button>
                 </div>
               ) : (
-                <Button size="sm">
-                  Iniciar Sesión
-                </Button>
+                <Link to="/auth">
+                  <Button size="sm">
+                    Iniciar Sesión
+                  </Button>
+                </Link>
               )}
             </div>
           </div>
@@ -78,9 +90,11 @@ export function HomePage() {
             <p className="text-xl mb-6">
               Encuentra los mejores productos de óptica y tecnología
             </p>
-            <Button variant="secondary" size="lg">
-              Explorar Productos
-            </Button>
+            <Link to="/products">
+              <Button variant="secondary" size="lg">
+                Explorar Productos
+              </Button>
+            </Link>
           </div>
         </section>
 

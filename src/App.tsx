@@ -5,6 +5,8 @@ import { CartProvider } from './context/CartContext';
 import { useAuth } from './hooks/useAuth';
 import { AuthPage } from './pages/AuthPage';
 import { HomePage } from './pages/HomePage';
+import { ProductsPage } from './pages/ProductsPage';
+import { CartPage } from './pages/CartPage';
 
 function AppContent() {
   const { user, loading } = useAuth();
@@ -26,6 +28,14 @@ function AppContent() {
         <Route
           path="/auth"
           element={user ? <Navigate to="/" replace /> : <AuthPage />}
+        />
+        <Route
+          path="/products"
+          element={user ? <ProductsPage /> : <Navigate to="/auth" replace />}
+        />
+        <Route
+          path="/cart"
+          element={user ? <CartPage /> : <Navigate to="/auth" replace />}
         />
         <Route
           path="/"
