@@ -29,7 +29,7 @@ Una moderna plataforma de ecommerce especializada en equipos de óptica y tecnol
 
 1. **Clona el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/horus-optic.git
+   git clone https://github.com/Mariamm240/Horus-Optic.git
    cd horus-optic
    ```
 
@@ -119,7 +119,161 @@ Una moderna plataforma de ecommerce especializada en equipos de óptica y tecnol
 
 ## 🚀 Despliegue
 
-### Vercel (Recomendado)
+### Bluehost (Recomendado para este proyecto)
+
+Bluehost es una excelente opción para desplegar aplicaciones React. Aquí tienes los pasos detallados:
+
+#### Preparación del Proyecto
+
+1. **Actualizar variables de entorno para producción**:
+   ```env
+   VITE_SUPABASE_URL=https://bepozoglbsvkqjhmclvk.supabase.co
+   VITE_SUPABASE_ANON_KEY=tu_clave_anonima_de_supabase
+   VITE_APP_NAME=Horus Optic
+   VITE_APP_URL=https://tudominio.com
+   ```
+
+2. **Compilar el proyecto**:
+   ```bash
+   npm run build
+   ```
+   Esto creará una carpeta `dist` con todos los archivos optimizados.
+
+#### Subir a Bluehost
+
+**Opción A: Via File Manager (Recomendado)**
+
+1. **Accede al cPanel de Bluehost**
+2. **Abre File Manager**
+3. **Navega a `public_html`** (o la carpeta de tu dominio)
+4. **Sube todo el contenido de la carpeta `dist`**:
+   - Puedes comprimir la carpeta `dist` en ZIP
+   - Subirla a Bluehost
+   - Extraer directamente en `public_html`
+
+**Opción B: Via FTP**
+
+1. **Usa un cliente FTP** (como FileZilla)
+2. **Conecta con las credenciales de Bluehost**
+3. **Sube el contenido de `dist` a `public_html`**
+
+#### Configuración de .htaccess
+
+Crea un archivo `.htaccess` en `public_html` con este contenido:
+
+```apache
+# Configuración para React Router
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Configuración de cache para assets
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+# Comprimir archivos
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+```
+
+#### Automatización del Despliegue
+
+Para automatizar futuros despliegues, puedes crear este script:
+
+**deploy.bat** (Windows):
+```batch
+@echo off
+echo Compilando proyecto...
+npm run build
+echo Comprimiendo archivos...
+powershell Compress-Archive -Path dist\* -DestinationPath horus-optic-build.zip -Force
+echo ¡Listo! Sube horus-optic-build.zip a tu Bluehost y extrae en public_html
+pause
+```
+
+**deploy.sh** (Mac/Linux):
+```bash
+#!/bin/bash
+echo "Compilando proyecto..."
+npm run build
+echo "Comprimiendo archivos..."
+cd dist && zip -r ../horus-optic-build.zip . && cd ..
+echo "¡Listo! Sube horus-optic-build.zip a tu Bluehost y extrae en public_html"
+```
+
+### 🔧 Configuración Específica para Bluehost
+
+#### Antes del Primer Despliegue
+
+1. **Actualiza la URL de producción**:
+   En tu archivo `.env`, cambia:
+   ```env
+   VITE_APP_URL=https://tudominio.com
+   ```
+
+2. **Verifica la configuración de Supabase**:
+   - Asegúrate de que las URLs de tu proyecto estén permitidas en Supabase
+   - Ve a Authentication → Settings → Site URL
+   - Agrega tu dominio de Bluehost
+
+#### Despliegue Rápido
+
+**Método 1: Script Automático (Recomendado)**
+```bash
+# En Windows
+deploy-bluehost.bat
+
+# En Mac/Linux
+chmod +x deploy-bluehost.sh
+./deploy-bluehost.sh
+```
+
+**Método 2: Manual**
+```bash
+npm run build
+# Luego sube manualmente la carpeta dist/ a public_html
+```
+
+#### Ventajas de Bluehost vs Vercel
+
+✅ **Bluehost**:
+- Ya tienes hosting y dominio
+- Control total del servidor
+- Sin límites de builds
+- Soporte técnico directo
+
+⚡ **Vercel**:
+- Despliegue automático desde Git
+- CDN global incluido
+- Función serverless automáticas
+
+**Recomendación**: Mantente en Bluehost si ya tienes el setup. Es perfectamente adecuado para este proyecto.
+
+### Vercel (Alternativa)
+
+Si prefieres una opción más automatizada:
 
 1. **Conecta tu repositorio a Vercel:**
    ```bash

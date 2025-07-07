@@ -44,3 +44,7 @@ dist-ssr
 # Temporary folders
 tmp/
 temp/
+
+# Build files for deployment
+horus-optic-build.zip
+*.zip
