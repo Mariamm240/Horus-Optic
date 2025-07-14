@@ -5,14 +5,14 @@ export function AboutPage() {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <section className="relative" style={{ background: 'linear-gradient(135deg, #B892D5 0%, #E29AEE 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{ color: '#FFFFFF' }}>
               Acerca de Horus Optic
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-              Más de 20 años brindando soluciones de visión excepcionales con 
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" style={{ color: '#FFFFFF', opacity: '0.9' }}>
+              Más de 10 años brindando soluciones de visión excepcionales en Bucaramanga con 
               tecnología de vanguardia y un servicio personalizado.
             </p>
           </div>
@@ -22,8 +22,8 @@ export function AboutPage() {
       {/* Mission Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Nuestra Misión</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4" style={{ color: '#B892D5' }}>Nuestra Misión</h2>
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#9C989F' }}>
             Proporcionar productos ópticos de la más alta calidad y servicios excepcionales 
             que mejoren la vida de nuestros clientes a través de una visión perfecta.
           </p>
@@ -31,21 +31,21 @@ export function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="bg-primary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Target className="h-10 w-10 text-primary-600" />
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'rgba(184, 146, 213, 0.1)' }}>
+              <Target className="h-10 w-10" style={{ color: '#B892D5' }} />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Precisión</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold mb-3" style={{ color: '#B892D5' }}>Precisión</h3>
+            <p style={{ color: '#9C989F' }}>
               Cada producto es cuidadosamente seleccionado para garantizar la máxima precisión óptica.
             </p>
           </div>
           
           <div className="text-center">
-            <div className="bg-primary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Award className="h-10 w-10 text-primary-600" />
+            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: 'rgba(184, 146, 213, 0.1)' }}>
+              <Award className="h-10 w-10" style={{ color: '#B892D5' }} />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Calidad</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold mb-3" style={{ color: '#B892D5' }}>Calidad</h3>
+            <p style={{ color: '#9C989F' }}>
               Trabajamos solo con las marcas más reconocidas y prestigiosas del mercado óptico.
             </p>
           </div>

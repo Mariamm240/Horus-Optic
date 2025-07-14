@@ -11,13 +11,13 @@ export function CartPage() {
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center">
-          <ShoppingBag className="h-24 w-24 text-gray-300 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Tu carrito está vacío</h2>
-          <p className="text-gray-600 mb-8">
+          <ShoppingBag className="h-24 w-24 mx-auto mb-4" style={{ color: '#B892D5' }} />
+          <h2 className="text-2xl font-bold mb-4" style={{ color: '#B892D5' }}>Tu carrito está vacío</h2>
+          <p className="mb-8" style={{ color: '#9C989F' }}>
             Agrega algunos productos a tu carrito para comenzar a comprar.
           </p>
           <Link to="/products">
-            <Button size="lg">
+            <Button size="lg" style={{ backgroundColor: '#B892D5', color: '#FFFFFF' }}>
               Explorar Productos
             </Button>
           </Link>
@@ -37,11 +37,12 @@ export function CartPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Carrito de Compras</h1>
+        <h1 className="text-3xl font-bold" style={{ color: '#B892D5' }}>Carrito de Compras</h1>
         <Button
           variant="outline"
           onClick={clearCart}
-          className="text-red-600 hover:text-red-700"
+          className="hover:opacity-80"
+          style={{ color: '#E29AEE', borderColor: '#E29AEE' }}
         >
           <Trash2 className="h-4 w-4 mr-2" />
           Vaciar Carrito
@@ -68,7 +69,7 @@ export function CartPage() {
                     <p className="text-sm text-gray-600 mb-2">
                       {item.product.brand}
                     </p>
-                    <p className="text-lg font-bold text-primary-600">
+                    <p className="text-lg font-bold text-horus-purple">
                       {formatPrice(item.price)}
                     </p>
                   </div>
@@ -141,7 +142,7 @@ export function CartPage() {
                     <span className="text-lg font-semibold text-gray-900">
                       Total:
                     </span>
-                    <span className="text-lg font-bold text-primary-600">
+                    <span className="text-lg font-bold text-horus-purple">
                       {formatPrice(cart.total + (cart.subtotal >= 100 ? 0 : 9.99))}
                     </span>
                   </div>

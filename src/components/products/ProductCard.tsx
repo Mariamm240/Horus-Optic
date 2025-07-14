@@ -61,7 +61,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
             <div className="flex justify-between items-start mb-4">
               <div className="flex-1">
                 <h3 
-                  className="text-xl font-semibold text-gray-900 mb-2 cursor-pointer hover:text-blue-600 transition-colors"
+                  className="text-xl font-semibold text-horus-purple mb-2 cursor-pointer hover:text-horus-pink transition-colors"
                   onClick={handleProductClick}
                 >
                   {product.name}
@@ -71,13 +71,13 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
                 
                 {product.features && (
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">
+                    <h4 className="text-sm font-medium text-horus-purple mb-2">
                       Características:
                     </h4>
                     <ul className="text-sm text-gray-600 space-y-1">
                       {product.features.slice(0, 3).map((feature, index) => (
                         <li key={index} className="flex items-center">
-                          <span className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-2"></span>
+                          <span className="w-1.5 h-1.5 bg-horus-purple rounded-full mr-2"></span>
                           {feature}
                         </li>
                       ))}
@@ -87,7 +87,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
               </div>
 
               <div className="ml-6 text-right">
-                <div className="text-2xl font-bold text-primary-600 mb-2">
+                <div className="text-2xl font-bold text-horus-purple mb-2">
                   {formatPrice(product.price)}
                 </div>
                 <div className="flex items-center justify-end mb-2">
@@ -149,7 +149,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
 
       <div className="p-4">
         <div className="mb-2 cursor-pointer" onClick={handleProductClick}>
-          <h3 className="font-semibold text-gray-900 text-lg mb-1 line-clamp-2 hover:text-blue-600 transition-colors">
+          <h3 className="font-semibold text-horus-purple text-lg mb-1 line-clamp-2 hover:text-horus-pink transition-colors">
             {product.name}
           </h3>
           <p className="text-sm text-gray-600">{product.brand}</p>
@@ -169,7 +169,7 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
         </div>
 
         <div className="flex items-center justify-between">
-          <div className="text-xl font-bold text-primary-600">
+          <div className="text-xl font-bold text-horus-purple">
             {formatPrice(product.price)}
           </div>
           <Button

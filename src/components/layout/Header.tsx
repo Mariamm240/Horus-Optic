@@ -69,13 +69,13 @@ export function Header() {
 
   return (
     <>
-    <header className="bg-white shadow-sm border-b sticky top-0 z-50">
+    <header style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} className="border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-primary-600 hover:text-primary-700">
-              <Eye className="h-8 w-8" />
+            <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-white hover:opacity-90 transition-opacity">
+              <img src="/Logo.png" alt="Horus Optic" className="h-10 w-auto" />
               <span>HORUS OPTIC</span>
             </Link>
           </div>
@@ -86,8 +86,8 @@ export function Header() {
               to="/"
               className={`text-sm font-medium transition-colors ${
                 isActive('/') 
-                  ? 'text-primary-600' 
-                  : 'text-gray-700 hover:text-primary-600'
+                  ? 'text-white font-semibold' 
+                  : 'text-white opacity-90 hover:opacity-100'
               }`}
             >
               Inicio
@@ -103,8 +103,8 @@ export function Header() {
                 to="/products"
                 className={`flex items-center space-x-1 text-sm font-medium transition-colors px-3 py-2 rounded-md ${
                   isActive('/products') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    ? 'text-white font-semibold' 
+                    : 'text-white opacity-90 hover:opacity-100 hover:bg-white hover:bg-opacity-10'
                 }`}
               >
                 <span>Productos</span>
@@ -117,18 +117,18 @@ export function Header() {
                   <div className="grid grid-cols-2 gap-6">
                     {/* Categories */}
                     <div>
-                      <h3 className="text-sm font-semibold text-gray-900 mb-3">Categorías</h3>
+                      <h3 className="text-sm font-semibold mb-3" style={{ color: '#B892D5' }}>Categorías</h3>
                       <div className="space-y-2">
                         {productCategories.map((category, index) => (
                           <Link
                             key={index}
                             to={category.href}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 text-sm"
+                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 text-sm transition-colors"
                           >
-                            <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
-                              <category.icon className="h-4 w-4 text-blue-600" />
+                            <div style={{ background: 'rgba(184, 146, 213, 0.1)' }} className="w-8 h-8 rounded-lg flex items-center justify-center">
+                              <category.icon className="h-4 w-4" style={{ color: '#B892D5' }} />
                             </div>
-                            <span className="text-gray-700">{category.name}</span>
+                            <span style={{ color: '#9C989F' }} className="hover:text-gray-700">{category.name}</span>
                           </Link>
                         ))}
                       </div>
@@ -136,34 +136,36 @@ export function Header() {
                     
                     {/* Featured Products */}
                     <div>
-                      <h3 className="text-sm font-semibold text-gray-900 mb-3">Productos Destacados</h3>
+                      <h3 className="text-sm font-semibold mb-3" style={{ color: '#B892D5' }}>Productos Destacados</h3>
                       <div className="space-y-3">
                         {featuredProducts.map((product, index) => (
                           <div key={index} className="flex items-center justify-between">
                             <div>
                               <div className="flex items-center space-x-2">
-                                <h4 className="text-sm font-medium text-gray-900">{product.name}</h4>
+                                <h4 className="text-sm font-medium" style={{ color: '#B892D5' }}>{product.name}</h4>
                                 {product.badge && (
                                   <span className={`px-2 py-1 text-xs rounded-full ${
-                                    product.badge === 'Popular' ? 'bg-blue-100 text-blue-600' : 'bg-green-100 text-green-600'
-                                  }`}>
+                                    product.badge === 'Popular' ? 'text-white' : 'text-white'
+                                  }`} style={{ 
+                                    backgroundColor: product.badge === 'Popular' ? '#B892D5' : '#E29AEE' 
+                                  }}>
                                     {product.badge}
                                   </span>
                                 )}
                               </div>
-                              <p className="text-xs text-gray-500">{product.category}</p>
+                              <p className="text-xs" style={{ color: '#9C989F' }}>{product.category}</p>
                             </div>
-                            <span className="text-sm font-semibold text-primary-600">{product.price}</span>
+                            <span className="text-sm font-semibold" style={{ color: '#B892D5' }}>{product.price}</span>
                           </div>
                         ))}
                       </div>
                       
                       {/* Popular Brands */}
                       <div className="mt-4">
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Marcas Populares</h4>
+                        <h4 className="text-sm font-semibold mb-2" style={{ color: '#B892D5' }}>Marcas Populares</h4>
                         <div className="grid grid-cols-3 gap-2">
                           {popularBrands.flat().map((brand, index) => (
-                            <div key={index} className="text-xs text-gray-600 hover:text-primary-600 cursor-pointer">
+                            <div key={index} className="text-xs cursor-pointer transition-colors" style={{ color: '#9C989F' }}>
                               {brand}
                             </div>
                           ))}
@@ -172,7 +174,8 @@ export function Header() {
                       
                       <Link 
                         to="/products"
-                        className="mt-4 flex items-center justify-center w-full px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors text-sm font-medium"
+                        className="mt-4 flex items-center justify-center w-full px-4 py-2 rounded-lg transition-colors text-sm font-medium text-white"
+                        style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)' }}
                       >
                         <Glasses className="h-4 w-4 mr-2" />
                         Ver todos los productos
@@ -187,8 +190,8 @@ export function Header() {
               to="/services"
               className={`text-sm font-medium transition-colors ${
                 isActive('/services') 
-                  ? 'text-primary-600' 
-                  : 'text-gray-700 hover:text-primary-600'
+                  ? 'text-white font-semibold' 
+                  : 'text-white opacity-90 hover:opacity-100'
               }`}
             >
               Servicios
@@ -198,8 +201,8 @@ export function Header() {
               to="/testimonials"
               className={`text-sm font-medium transition-colors ${
                 isActive('/testimonials') 
-                  ? 'text-primary-600' 
-                  : 'text-gray-700 hover:text-primary-600'
+                  ? 'text-white font-semibold' 
+                  : 'text-white opacity-90 hover:opacity-100'
               }`}
             >
               Testimonios
@@ -212,7 +215,7 @@ export function Header() {
             <Button 
               variant="outline" 
               size="sm" 
-              className="hidden sm:flex"
+              className="hidden sm:flex border-white text-white hover:bg-white hover:text-purple-600"
               onClick={() => setIsContactModalOpen(true)}
             >
               Contacto
@@ -221,9 +224,9 @@ export function Header() {
             {/* User Authentication */}
             {user ? (
               <div className="flex items-center space-x-3">
-                <div className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-gray-50 rounded-lg">
-                  <User className="h-5 w-5 text-primary-600" />
-                  <span className="text-sm text-gray-700 font-medium">
+                <div className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
+                  <User className="h-5 w-5 text-white" />
+                  <span className="text-sm text-white font-medium">
                     Hola, {user.firstName || user.email.split('@')[0]}
                   </span>
                 </div>
@@ -231,14 +234,14 @@ export function Header() {
                   variant="outline"
                   size="sm"
                   onClick={handleLogout}
-                  className="hidden sm:flex text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300"
+                  className="hidden sm:flex text-red-300 border-red-300 hover:bg-red-100 hover:text-red-600 hover:border-red-400"
                 >
                   Cerrar Sesión
                 </Button>
               </div>
             ) : (
               <Link to="/auth">
-                <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm">
+                <Button size="sm" className="text-white shadow-sm transition-colors" style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)', border: 'none' }}>
                   <User className="h-4 w-4 mr-2" />
                   Iniciar Sesión
                 </Button>
@@ -247,10 +250,10 @@ export function Header() {
 
             {/* Cart */}
             <Link to="/cart" className="relative">
-              <button className="p-2 text-gray-400 hover:text-gray-500 transition-colors hover:bg-gray-50 rounded-lg">
+              <button className="p-2 text-white hover:opacity-80 transition-opacity rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
                 <ShoppingCart className="h-6 w-6" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium shadow-sm">
+                  <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium shadow-sm" style={{ backgroundColor: '#E29AEE' }}>
                     {getTotalItems()}
                   </span>
                 )}
@@ -259,7 +262,7 @@ export function Header() {
 
             {/* Mobile menu button */}
             <button
-              className="lg:hidden p-2 text-gray-400 hover:text-gray-500"
+              className="lg:hidden p-2 text-white hover:opacity-80"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -274,15 +277,16 @@ export function Header() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
               {/* Navigation Links */}
               <Link
                 to="/"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    ? 'text-white font-semibold' 
+                    : 'text-white opacity-90 hover:opacity-100'
                 }`}
+                style={isActive('/') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Inicio
@@ -290,13 +294,13 @@ export function Header() {
               
               {/* Products with Categories */}
               <div className="px-3 py-2">
-                <div className="text-base font-medium text-gray-700 mb-2">Productos</div>
+                <div className="text-base font-medium text-white mb-2">Productos</div>
                 <div className="ml-4 space-y-1">
                   {productCategories.map((category, index) => (
                     <Link
                       key={index}
                       to={category.href}
-                      className="flex items-center space-x-2 px-2 py-1 text-sm text-gray-600 hover:text-primary-600"
+                      className="flex items-center space-x-2 px-2 py-1 text-sm text-gray-600 hover:text-horus-purple"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <category.icon className="h-4 w-4" />
@@ -310,8 +314,8 @@ export function Header() {
                 to="/services"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/services') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    ? 'text-horus-purple bg-horus-purple/10' 
+                    : 'text-horus-gray hover:text-horus-purple hover:bg-horus-purple/10'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >

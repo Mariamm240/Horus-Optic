@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button, Input } from './ui';
-import { X, Mail, Phone, MessageSquare, User, MapPin } from 'lucide-react';
+import { X, Mail, Phone, MessageSquare, User, MapPin, Instagram } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const contactSchema = z.object({
@@ -98,8 +98,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-              <Mail className="h-5 w-5 text-blue-600" />
+            <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+              <Mail className="h-5 w-5 text-horus-purple" />
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Contáctanos</h2>
@@ -115,28 +115,42 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         </div>
 
         {/* Contact Info Banner */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 border-b border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+        <div className="bg-gradient-to-r from-secondary-50 to-primary-50 p-6 border-b border-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mb-2">
-                <Phone className="h-4 w-4 text-blue-600" />
+              <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mb-2">
+                <Phone className="h-4 w-4 text-horus-purple" />
               </div>
               <p className="text-sm font-medium text-gray-900">Teléfono</p>
-              <p className="text-sm text-gray-600">+57 300 123 4567</p>
+              <p className="text-sm text-gray-600">317 492 3832</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mb-2">
-                <Mail className="h-4 w-4 text-blue-600" />
+              <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mb-2">
+                <Mail className="h-4 w-4 text-horus-purple" />
               </div>
               <p className="text-sm font-medium text-gray-900">Email</p>
               <p className="text-sm text-gray-600">info@horusoptic.com</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mb-2">
-                <MapPin className="h-4 w-4 text-blue-600" />
+              <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center mb-2">
+                <MapPin className="h-4 w-4 text-horus-purple" />
               </div>
               <p className="text-sm font-medium text-gray-900">Ubicación</p>
-              <p className="text-sm text-gray-600">Bogotá, Colombia</p>
+              <p className="text-sm text-gray-600">Carrera 33 # 47 - 64, Barrio Cabecera, Bucaramanga</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-horus-pink to-horus-purple rounded-full flex items-center justify-center mb-2">
+                <Instagram className="h-4 w-4 text-white" />
+              </div>
+              <p className="text-sm font-medium text-gray-900">Instagram</p>
+              <a 
+                href="https://www.instagram.com/horus_optic_/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm text-horus-pink hover:text-secondary-600 transition-colors"
+              >
+                @horus_optic_
+              </a>
             </div>
           </div>
         </div>

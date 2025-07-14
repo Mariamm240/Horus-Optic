@@ -200,26 +200,26 @@ export function ServicesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="absolute inset-0 bg-black/60"></div>
+      <section className="relative py-20" style={{ background: 'linear-gradient(135deg, #B892D5 0%, #E29AEE 100%)' }}>
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold mb-6" style={{ color: '#ffffff', fontWeight: '700' }}>Servicios de Optometría</h1>
-          <p className="text-xl mb-8 max-w-3xl mx-auto" style={{ color: '#e0f2fe', fontWeight: '500' }}>
+          <h1 className="text-5xl font-bold mb-6" style={{ color: '#FFFFFF', fontWeight: '700' }}>Servicios de Optometría</h1>
+          <p className="text-xl mb-8 max-w-3xl mx-auto" style={{ color: '#FFFFFF', fontWeight: '500', opacity: '0.9' }}>
             Cuidado visual profesional y personalizado para toda la familia
           </p>
           <div className="flex gap-4 justify-center">
             <Button 
               size="lg" 
               style={{
-                backgroundColor: '#ffffff',
-                color: '#1e40af',
-                border: '3px solid #ffffff',
+                backgroundColor: '#FFFFFF',
+                color: '#B892D5',
+                border: '3px solid #FFFFFF',
                 fontWeight: '700',
                 padding: '12px 32px',
                 fontSize: '18px',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
               }}
-              className="hover:bg-gray-100 transition-all duration-200"
+              className="hover:opacity-90 transition-all duration-200"
               onClick={() => handleScheduleAppointment()}
             >
               Agendar Cita

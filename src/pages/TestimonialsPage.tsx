@@ -10,8 +10,8 @@ export function TestimonialsPage() {
       id: 1,
       username: 'maria_garcia',
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100&h=100&fit=crop&crop=face',
-      image: 'https://images.unsplash.com/photo-1508296695146-257a814070b4?w=600&h=800&fit=crop',
-      caption: '¡Me encantan mis nuevas gafas de sol de @horusoptic! La calidad es increíble y el servicio fue excelente. #gafasdesol #horusoptic',
+      image: '/Media/CATALOGO WEB 600 x400/_MG_2505.jpg',
+      caption: '¡Me encantan mis nuevas gafas de sol de @horus_optic_! La calidad es increíble y el servicio fue excelente. #gafasdesol #horusoptic',
       likes: 23442,
       comments: 156,
       time: '2 días'
@@ -20,8 +20,8 @@ export function TestimonialsPage() {
       id: 2,
       username: 'carlos_rodriguez',
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
-      image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&h=800&fit=crop',
-      caption: 'Gracias a @horusoptic por estas gafas graduadas tan cómodas. La atención personalizada marca la diferencia. #visiónperfecta',
+      image: '/Media/CATALOGO WEB 600 x400/_MG_2507.jpg',
+      caption: 'Gracias a @horus_optic_ por estas gafas graduadas tan cómodas. La atención personalizada marca la diferencia. #visiónperfecta',
       likes: 18723,
       comments: 89,
       time: '4 días'
@@ -30,8 +30,8 @@ export function TestimonialsPage() {
       id: 3,
       username: 'laura_martinez',
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-      image: 'https://images.unsplash.com/photo-1556306303-76ce7ce1ec0d?w=600&h=800&fit=crop',
-      caption: 'Mis nuevas gafas deportivas de @horusoptic son perfectas para mis entrenamientos. ¡Súper recomendadas! #deportes #gafas',
+      image: '/Media/CATALOGO WEB 600 x400/_MG_2508.jpg',
+      caption: 'Mis nuevas gafas deportivas de @horus_optic_ son perfectas para mis entrenamientos. ¡Súper recomendadas! #deportes #gafas',
       likes: 31256,
       comments: 203,
       time: '1 semana'
@@ -40,8 +40,8 @@ export function TestimonialsPage() {
       id: 4,
       username: 'javier_lopez',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-      image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=800&fit=crop',
-      caption: 'Primera vez comprando en @horusoptic y no será la última. Excelente asesoramiento y productos de primera calidad. #clientesatisfecho',
+      image: '/Media/CATALOGO WEB 600 x400/_MG_2509.jpg',
+      caption: 'Primera vez comprando en @horus_optic_ y no será la última. Excelente asesoramiento y productos de primera calidad. #clientesatisfecho',
       likes: 27638,
       comments: 134,
       time: '1 semana'
@@ -50,8 +50,8 @@ export function TestimonialsPage() {
       id: 5,
       username: 'ana_fernandez',
       avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
-      image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=800&fit=crop',
-      caption: 'Mis lentes de contacto de @horusoptic son tan cómodos que ni siquiera noto que los llevo puestos. ¡Gracias por el gran servicio! #lentesdecontacto',
+      image: '/Media/CATALOGO WEB 600 x400/_MG_2510.jpg',
+      caption: 'Mis lentes de contacto de @horus_optic_ son tan cómodos que ni siquiera noto que los llevo puestos. ¡Gracias por el gran servicio! #lentesdecontacto',
       likes: 19827,
       comments: 98,
       time: '2 semanas'
@@ -234,10 +234,17 @@ export function TestimonialsPage() {
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                   Descubre lo que nuestros clientes comparten sobre sus experiencias
                 </p>
-                <Button className="mt-6 bg-pink-500 hover:bg-pink-600">
-                  <Instagram className="mr-2 h-5 w-5" />
-                  Seguirnos
-                </Button>
+                <a 
+                  href="https://www.instagram.com/horus_optic_/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block"
+                >
+                  <Button className="mt-6 bg-pink-500 hover:bg-pink-600">
+                    <Instagram className="mr-2 h-5 w-5" />
+                    Seguir @horus_optic_
+                  </Button>
+                </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

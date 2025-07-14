@@ -11,11 +11,18 @@ export function AuthPage() {
   const toggleToLogin = () => setIsActive(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-200 to-indigo-200 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(135deg, #E29AEE 0%, #B892D5 100%)' }}>
       {/* Back to Home Link */}
       <Link 
         to="/" 
-        className="absolute top-6 left-6 inline-flex items-center text-sm text-gray-600 hover:text-indigo-600 transition-colors bg-white px-3 py-2 rounded-full shadow-sm"
+        className="absolute top-6 left-6 inline-flex items-center text-sm transition-colors px-3 py-2 rounded-full shadow-sm" 
+        style={{ color: '#9C989F', backgroundColor: '#FFFFFF' }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = '#B892D5';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = '#9C989F';
+        }}
       >
         <ArrowLeft className="h-4 w-4 mr-2" />
         Volver al inicio
@@ -28,8 +35,8 @@ export function AuthPage() {
         <div className={`absolute top-0 h-full w-1/2 transition-all duration-600 ease-in-out z-20 ${isActive ? 'transform translate-x-full' : 'left-0'}`}>
           <div className="bg-white flex items-center justify-center flex-col px-10 h-full">
             <div className="flex items-center space-x-2 mb-8">
-              <Eye className="h-8 w-8 text-indigo-600" />
-              <h1 className="text-2xl font-bold text-gray-900">HORUS OPTIC</h1>
+              <Eye className="h-8 w-8" style={{ color: '#B892D5' }} />
+              <h1 className="text-2xl font-bold" style={{ color: '#9C989F' }}>HORUS OPTIC</h1>
             </div>
             <LoginForm />
           </div>
@@ -43,8 +50,8 @@ export function AuthPage() {
         }`}>
           <div className="bg-white flex items-center justify-center flex-col px-10 h-full">
             <div className="flex items-center space-x-2 mb-8">
-              <Eye className="h-8 w-8 text-indigo-600" />
-              <h1 className="text-2xl font-bold text-gray-900">HORUS OPTIC</h1>
+              <Eye className="h-8 w-8" style={{ color: '#B892D5' }} />
+              <h1 className="text-2xl font-bold" style={{ color: '#9C989F' }}>HORUS OPTIC</h1>
             </div>
             <RegisterForm />
           </div>

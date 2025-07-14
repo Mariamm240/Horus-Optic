@@ -378,7 +378,7 @@ export function ProductsPage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-16 lg:py-24">
+      <section className="relative py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #B892D5 0%, #E29AEE 100%)' }}>
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1920&h=600&fit=crop" 
@@ -387,20 +387,21 @@ export function ProductsPage() {
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{ color: '#FFFFFF' }}>
             Los mejores lentes de contacto en Colombia
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" style={{ color: '#FFFFFF', opacity: '0.9' }}>
             Descubre nuestra colección premium de lentes de contacto y gafas de las mejores marcas internacionales.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
+            <Button size="lg" className="px-8 py-4 text-lg font-semibold hover:opacity-90" style={{ backgroundColor: '#FFFFFF', color: '#B892D5' }}>
               Ver lentes de contacto
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-white text-white hover:bg-white hover:text-primary-600 px-8 py-4 text-lg font-semibold"
+              className="px-8 py-4 text-lg font-semibold hover:opacity-90"
+              style={{ borderColor: '#FFFFFF', color: '#FFFFFF' }}
             >
               Explorar gafas
             </Button>
@@ -420,9 +421,10 @@ export function ProductsPage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     selectedCategory === category.id
-                      ? 'bg-primary-600 text-white'
+                      ? 'text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
+                  style={selectedCategory === category.id ? { backgroundColor: '#B892D5' } : {}}
                 >
                   {category.name}
                 </button>
@@ -452,16 +454,22 @@ export function ProductsPage() {
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`p-2 ${
-                    viewMode === 'grid' ? 'bg-primary-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
+                    viewMode === 'grid' 
+                      ? 'text-white' 
+                      : 'bg-white text-gray-600 hover:bg-gray-50'
                   }`}
+                  style={viewMode === 'grid' ? { backgroundColor: '#B892D5' } : {}}
                 >
                   <Grid className="h-4 w-4" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
                   className={`p-2 ${
-                    viewMode === 'list' ? 'bg-primary-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
+                    viewMode === 'list' 
+                      ? 'text-white' 
+                      : 'bg-white text-gray-600 hover:bg-gray-50'
                   }`}
+                  style={viewMode === 'list' ? { backgroundColor: '#B892D5' } : {}}
                 >
                   <List className="h-4 w-4" />
                 </button>
@@ -482,11 +490,11 @@ export function ProductsPage() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16" style={{ backgroundColor: '#F8F9FA' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Productos Destacados</h2>
-            <Button variant="outline">Ver todos</Button>
+            <h2 className="text-3xl font-bold" style={{ color: '#B892D5' }}>Productos Destacados</h2>
+            <Button variant="outline" style={{ borderColor: '#B892D5', color: '#B892D5' }}>Ver todos</Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

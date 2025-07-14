@@ -36,31 +36,32 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
-      <h1 className="text-2xl font-bold mb-4">Crear Cuenta</h1>
+      <h1 className="text-2xl font-bold mb-4" style={{ color: '#B892D5' }}>Crear Cuenta</h1>
       
       {/* Social Icons */}
       <div className="flex justify-center space-x-3 mb-5">
-        <a href="#" className="w-10 h-10 border border-gray-300 rounded-xl flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:border-indigo-600 transition-colors">
+        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
           <FaGooglePlusG className="text-base" />
         </a>
-        <a href="#" className="w-10 h-10 border border-gray-300 rounded-xl flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:border-indigo-600 transition-colors">
+        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
           <FaFacebookF className="text-base" />
         </a>
-        <a href="#" className="w-10 h-10 border border-gray-300 rounded-xl flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:border-indigo-600 transition-colors">
+        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
           <FaGithub className="text-base" />
         </a>
-        <a href="#" className="w-10 h-10 border border-gray-300 rounded-xl flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:border-indigo-600 transition-colors">
+        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
           <FaLinkedinIn className="text-base" />
         </a>
       </div>
       
-      <span className="text-xs text-gray-600 block text-center mb-5">o usa tu email para registrarte</span>
+      <span className="text-xs block text-center mb-5" style={{ color: '#9C989F' }}>o usa tu email para registrarte</span>
       <div className="flex gap-2 mb-4">
         <div className="flex-1">
           <input
             {...register('firstName')}
             placeholder="Nombre"
-            className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-sm outline-none"
+            className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-purple-300"
+            style={{ backgroundColor: '#f8f9fa' }}
           />
           {errors.firstName && (
             <p className="mt-1 text-xs text-red-600">{errors.firstName.message}</p>
@@ -70,7 +71,8 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
           <input
             {...register('lastName')}
             placeholder="Apellido"
-            className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-sm outline-none"
+            className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-purple-300"
+            style={{ backgroundColor: '#f8f9fa' }}
           />
           {errors.lastName && (
             <p className="mt-1 text-xs text-red-600">{errors.lastName.message}</p>
@@ -83,7 +85,8 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
           type="email"
           {...register('email')}
           placeholder="Email"
-          className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-sm outline-none"
+          className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-purple-300"
+          style={{ backgroundColor: '#f8f9fa' }}
         />
         {errors.email && (
           <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>
@@ -95,12 +98,14 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
           type={showPassword ? 'text' : 'password'}
           {...register('password')}
           placeholder="Contraseña"
-          className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-sm outline-none pr-10"
+          className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none pr-10 focus:ring-2 focus:ring-purple-300"
+          style={{ backgroundColor: '#f8f9fa' }}
         />
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 hover:opacity-70 transition-opacity"
+          style={{ color: '#9C989F' }}
         >
           {showPassword ? (
             <EyeOff className="h-4 w-4" />
@@ -118,12 +123,14 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
           type={showConfirmPassword ? 'text' : 'password'}
           {...register('confirmPassword')}
           placeholder="Confirmar Contraseña"
-          className="w-full bg-gray-100 border-none rounded-lg px-4 py-3 text-sm outline-none pr-10"
+          className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none pr-10 focus:ring-2 focus:ring-purple-300"
+          style={{ backgroundColor: '#f8f9fa' }}
         />
         <button
           type="button"
           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 hover:opacity-70 transition-opacity"
+          style={{ color: '#9C989F' }}
         >
           {showConfirmPassword ? (
             <EyeOff className="h-4 w-4" />
@@ -139,7 +146,8 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-indigo-600 text-white text-xs py-3 px-11 rounded-lg font-semibold tracking-wider uppercase cursor-pointer hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full text-white text-xs py-3 px-11 rounded-lg font-semibold tracking-wider uppercase cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)' }}
       >
         {loading ? 'Registrando...' : 'Registrarse'}
       </button>
