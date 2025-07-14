@@ -1,4 +1,5 @@
 import { Star, ShoppingCart, Heart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../ui';
 import { useCart } from '../../hooks/useCart';
 import { formatPrice } from '../../lib/utils';
@@ -12,6 +13,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
   const { addToCart, loading } = useCart();
+  const navigate = useNavigate();
 
   const handleAddToCart = async () => {
     try {
@@ -23,6 +25,10 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
     } catch {
       toast.error('Error al agregar al carrito');
     }
+  };
+
+  const handleProductClick = () => {
+    navigate(`/products/${product.id}`);
   };
 
   const renderStars = (rating: number) => {
@@ -44,17 +50,20 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
     return (
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
         <div className="flex">
-          <div className="w-48 h-48 flex-shrink-0">
+          <div className="w-48 h-48 flex-shrink-0 cursor-pointer" onClick={handleProductClick}>
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
           <div className="flex-1 p-6">
             <div className="flex justify-between items-start mb-4">
               <div className="flex-1">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 
+                  className="text-xl font-semibold text-gray-900 mb-2 cursor-pointer hover:text-blue-600 transition-colors"
+                  onClick={handleProductClick}
+                >
                   {product.name}
                 </h3>
                 <p className="text-gray-600 text-sm mb-2">{product.brand}</p>
@@ -117,13 +126,16 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group">
-      <div className="relative">
+      <div className="relative cursor-pointer" onClick={handleProductClick}>
         <img
           src={product.imageUrl}
           alt={product.name}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <button className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+        <button 
+          className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+          onClick={(e) => e.stopPropagation()}
+        >
           <Heart className="h-4 w-4 text-gray-600 hover:text-red-500" />
         </button>
         {!product.inStock && (
@@ -136,8 +148,8 @@ export function ProductCard({ product, viewMode = 'grid' }: ProductCardProps) {
       </div>
 
       <div className="p-4">
-        <div className="mb-2">
-          <h3 className="font-semibold text-gray-900 text-lg mb-1 line-clamp-2">
+        <div className="mb-2 cursor-pointer" onClick={handleProductClick}>
+          <h3 className="font-semibold text-gray-900 text-lg mb-1 line-clamp-2 hover:text-blue-600 transition-colors">
             {product.name}
           </h3>
           <p className="text-sm text-gray-600">{product.brand}</p>

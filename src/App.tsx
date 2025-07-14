@@ -7,10 +7,10 @@ import { Layout } from './components/layout';
 import { AuthPage } from './pages/AuthPage';
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
+import { ProductDetailPage } from './pages/ProductDetailPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { CartPage } from './pages/CartPage';
 import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
 
 function AppContent() {
@@ -50,6 +50,18 @@ function AppContent() {
           }
         />
         <Route
+          path="/products/:id"
+          element={
+            user || allowGuestAccess ? (
+              <Layout>
+                <ProductDetailPage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
+        />
+        <Route
           path="/cart"
           element={
             user ? (
@@ -76,13 +88,7 @@ function AppContent() {
         <Route
           path="/contact"
           element={
-            user || allowGuestAccess ? (
-              <Layout>
-                <ContactPage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Navigate to="/" replace />
           }
         />
         <Route

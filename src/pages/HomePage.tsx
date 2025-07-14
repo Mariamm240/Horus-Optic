@@ -1,15 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 import { Button } from '../components/ui';
 import { ShoppingBag, Star, Truck, Clock, Eye, CheckCircle, Users, Phone, Mail, MapPin, Calendar } from 'lucide-react';
-import { testSupabaseConnection } from '../utils/testSupabase';
 
 export function HomePage() {
-  // Test Supabase connection on component mount
-  useEffect(() => {
-    testSupabaseConnection();
-  }, []);
-
   const featuredProducts = [
     {
       id: 1,
