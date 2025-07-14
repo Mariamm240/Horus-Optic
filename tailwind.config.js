@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+import { defineConfig } from '@tailwindcss/postcss'
+
+export default defineConfig({
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -20,7 +21,24 @@ export default {
           900: '#1e3a8a',
         },
       },
+      transitionDuration: {
+        '600': '600ms',
+      },
+      animation: {
+        'slideIn': 'slideIn 0.6s ease-in-out',
+      },
+      keyframes: {
+        slideIn: {
+          '0%, 49.99%': {
+            opacity: '0',
+            zIndex: '1',
+          },
+          '50%, 100%': {
+            opacity: '1',
+            zIndex: '5',
+          },
+        },
+      },
     },
   },
-  plugins: [],
-}
+})

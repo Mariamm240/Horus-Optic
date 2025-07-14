@@ -3,10 +3,15 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { useAuth } from './hooks/useAuth';
+import { Layout } from './components/layout';
 import { AuthPage } from './pages/AuthPage';
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
+import { ServicesPage } from './pages/ServicesPage';
 import { CartPage } from './pages/CartPage';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
+import { TestimonialsPage } from './pages/TestimonialsPage';
 
 function AppContent() {
   const { user, loading } = useAuth();
@@ -22,6 +27,9 @@ function AppContent() {
     );
   }
 
+  // Permitir acceso de invitado para navegación general, requerir auth para carrito y acciones sensibles
+  const allowGuestAccess = true;
+
   return (
     <Router>
       <Routes>
@@ -31,15 +39,87 @@ function AppContent() {
         />
         <Route
           path="/products"
-          element={user ? <ProductsPage /> : <Navigate to="/auth" replace />}
+          element={
+            user || allowGuestAccess ? (
+              <Layout>
+                <ProductsPage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
         />
         <Route
           path="/cart"
-          element={user ? <CartPage /> : <Navigate to="/auth" replace />}
+          element={
+            user ? (
+              <Layout>
+                <CartPage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            user || allowGuestAccess ? (
+              <Layout>
+                <AboutPage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            user || allowGuestAccess ? (
+              <Layout>
+                <ContactPage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            user || allowGuestAccess ? (
+              <Layout>
+                <ServicesPage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
+        />
+        <Route
+          path="/testimonials"
+          element={
+            user || allowGuestAccess ? (
+              <Layout>
+                <TestimonialsPage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
         />
         <Route
           path="/"
-          element={user ? <HomePage /> : <Navigate to="/auth" replace />}
+          element={
+            user || allowGuestAccess ? (
+              <Layout>
+                <HomePage />
+              </Layout>
+            ) : (
+              <Navigate to="/auth" replace />
+            )
+          }
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

@@ -27,10 +27,14 @@ export function AuthPage() {
         {/* Sign In Form */}
         <div className={`absolute top-0 h-full w-1/2 transition-all duration-600 ease-in-out z-20 ${isActive ? 'transform translate-x-full' : 'left-0'}`}>
           <div className="bg-white flex items-center justify-center flex-col px-10 h-full">
-            <div className="flex items-center space-x-2 mb-8">
+            <div className="flex items-center space-x-2 mb-6">
               <Eye className="h-8 w-8 text-indigo-600" />
               <h1 className="text-2xl font-bold text-gray-900">HORUS OPTIC</h1>
             </div>
+            <h2 className="text-2xl font-semibold mb-2">Iniciar Sesión</h2>
+            <p className="text-sm text-gray-600 mb-6 text-center leading-5 tracking-wide">
+              o usa tu email para iniciar sesión
+            </p>
             <LoginForm />
           </div>
         </div>
@@ -42,10 +46,14 @@ export function AuthPage() {
             : 'left-0 opacity-0 z-10'
         }`}>
           <div className="bg-white flex items-center justify-center flex-col px-10 h-full">
-            <div className="flex items-center space-x-2 mb-8">
+            <div className="flex items-center space-x-2 mb-6">
               <Eye className="h-8 w-8 text-indigo-600" />
               <h1 className="text-2xl font-bold text-gray-900">HORUS OPTIC</h1>
             </div>
+            <h2 className="text-2xl font-semibold mb-2">Crear Cuenta</h2>
+            <p className="text-sm text-gray-600 mb-6 text-center leading-5 tracking-wide">
+              o usa tu email para registrarte
+            </p>
             <RegisterForm />
           </div>
         </div>
@@ -64,9 +72,9 @@ export function AuthPage() {
             <div className={`absolute w-1/2 h-full flex items-center justify-center flex-col px-8 text-center top-0 transition-all duration-600 ease-in-out ${
               isActive ? 'transform translate-x-0' : 'transform -translate-x-[200%]'
             }`}>
-              <h1 className="text-2xl font-bold mb-4">¡Bienvenido de vuelta!</h1>
+              <h2 className="text-2xl font-bold mb-4">¡Bienvenido de vuelta!</h2>
               <p className="text-sm leading-5 tracking-wide mb-8">
-                Ingresa tus datos personales para usar todas las funciones del sitio
+                Para mantenerte conectado con nosotros, inicia sesión con tu información personal
               </p>
               <button
                 onClick={toggleToLogin}
@@ -80,7 +88,7 @@ export function AuthPage() {
             <div className={`absolute right-0 w-1/2 h-full flex items-center justify-center flex-col px-8 text-center top-0 transition-all duration-600 ease-in-out ${
               isActive ? 'transform translate-x-[200%]' : 'transform translate-x-0'
             }`}>
-              <h1 className="text-2xl font-bold mb-4">¡Hola, Amigo!</h1>
+              <h2 className="text-2xl font-bold mb-4">¡Hola, Amigo!</h2>
               <p className="text-sm leading-5 tracking-wide mb-8">
                 Regístrate con tus datos personales para usar todas las funciones del sitio
               </p>
@@ -95,6 +103,44 @@ export function AuthPage() {
           </div>
         </div>
 
+      </div>
+    </div>
+  );
+}
+                Iniciar Sesión
+              </button>
+              <button
+                className={`flex-1 py-2 px-4 text-sm font-medium rounded-md transition-colors ${
+                  !isLogin
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`}
+                onClick={() => setIsLogin(false)}
+              >
+                Registrarse
+              </button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isLogin ? (
+              <LoginForm onSuccess={handleAuthSuccess} />
+            ) : (
+              <RegisterForm onSuccess={handleAuthSuccess} />
+            )}
+          </CardContent>
+        </Card>
+
+        <div className="text-center">
+          <p className="text-sm text-gray-600">
+            {isLogin ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?'}{' '}
+            <button
+              className="font-medium text-primary-600 hover:text-primary-500"
+              onClick={() => setIsLogin(!isLogin)}
+            >
+              {isLogin ? 'Regístrate aquí' : 'Inicia sesión aquí'}
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );
