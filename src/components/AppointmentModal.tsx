@@ -130,8 +130,8 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-              <Calendar className="h-5 w-5 text-blue-600" />
+            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(184, 146, 213, 0.1)' }}>
+              <Calendar className="h-5 w-5" style={{ color: '#B892D5' }} />
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Agendar Cita</h2>
@@ -151,7 +151,7 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
           {/* Personal Information */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <User className="h-5 w-5 mr-2 text-blue-600" />
+              <User className="h-5 w-5 mr-2" style={{ color: '#B892D5' }} />
               Información Personal
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -186,7 +186,7 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
           {/* Appointment Details */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <Calendar className="h-5 w-5 mr-2 text-blue-600" />
+              <Calendar className="h-5 w-5 mr-2" style={{ color: '#B892D5' }} />
               Detalles de la Cita
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -196,7 +196,7 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
                 </label>
                 <select
                   {...register('service')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 >
                   <option value="">Seleccione un servicio</option>
                   {services.map((service) => (
@@ -224,7 +224,7 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
                 </label>
                 <select
                   {...register('time')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 >
                   <option value="">Seleccione una hora</option>
                   {timeSlots.map((time) => (
@@ -243,7 +243,7 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
           {/* Additional Notes */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <FileText className="h-5 w-5 mr-2 text-blue-600" />
+              <FileText className="h-5 w-5 mr-2" style={{ color: '#B892D5' }} />
               Información Adicional
             </h3>
             <div>
@@ -253,21 +253,21 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
               <textarea
                 {...register('notes')}
                 rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 placeholder="Cualquier información adicional que considere relevante..."
               />
             </div>
           </div>
 
           {/* Notice */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="rounded-lg p-4" style={{ backgroundColor: 'rgba(184, 146, 213, 0.1)', borderColor: 'rgba(184, 146, 213, 0.3)', border: '1px solid' }}>
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <Clock className="h-5 w-5 text-blue-600 mt-0.5" />
+                <Clock className="h-5 w-5 mt-0.5" style={{ color: '#B892D5' }} />
               </div>
               <div className="ml-3">
-                <h4 className="text-sm font-medium text-blue-900">Importante</h4>
-                <p className="text-sm text-blue-700 mt-1">
+                <h4 className="text-sm font-medium" style={{ color: '#B892D5' }}>Importante</h4>
+                <p className="text-sm mt-1" style={{ color: '#8B5A9B' }}>
                   Su cita será confirmada por nuestro equipo. Recibirá un email de confirmación con los detalles finales. 
                   Las citas están sujetas a disponibilidad.
                 </p>
@@ -288,7 +288,8 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
             </Button>
             <Button
               type="submit"
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+              className="flex-1 text-white hover:bg-purple-700"
+              style={{ backgroundColor: '#B892D5' }}
               loading={isSubmitting}
             >
               {isSubmitting ? 'Agendando...' : 'Agendar Cita'}

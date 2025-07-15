@@ -8,7 +8,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold" style={{ color: '#FFFFFF' }}>Horus Optic</h3>
+            <div className="flex items-start justify-start">
+              <img src="/Logo.png?v=2" alt="Horus Optic" className="h-16 w-auto object-contain" />
+            </div>
             <p className="text-sm leading-relaxed" style={{ color: '#FFFFFF', opacity: '0.9' }}>
               Tu óptica de confianza especializada en gafas, lentes de contacto y productos de salud visual. 
               Ofrecemos la mejor calidad y atención personalizada para cuidar tu visión.

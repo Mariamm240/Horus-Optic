@@ -56,27 +56,15 @@ export function Header() {
     { name: 'Gafas Deportivas', icon: Glasses, href: '/products?category=gafas-deportivas' }
   ];
 
-  const featuredProducts = [
-    { name: 'Ray-Ban Aviator', price: '$149.99', category: 'Clásico atemporal', badge: 'Popular' },
-    { name: 'Oakley Holbrook', price: '$129.99', category: 'Estilo deportivo' },
-    { name: 'Gucci GG0396S', price: '$299.99', category: 'Elegancia premium', badge: 'Nuevo' }
-  ];
-
-  const popularBrands = [
-    ['Ray-Ban', 'Oakley', 'Gucci'],
-    ['Prada', 'Tom Ford', 'Versace']
-  ];
-
   return (
     <>
     <header style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} className="border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-32">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-white hover:opacity-90 transition-opacity">
-              <img src="/Logo.png" alt="Horus Optic" className="h-10 w-auto" />
-              <span>HORUS OPTIC</span>
+            <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
+              <img src="/Logo.png?v=2" alt="Horus Optic" className="h-14 w-auto object-contain" />
             </Link>
           </div>
 
@@ -84,7 +72,7 @@ export function Header() {
           <nav className="hidden lg:flex items-center space-x-8">
             <Link
               to="/"
-              className={`text-sm font-medium transition-colors ${
+              className={`text-xl font-medium transition-colors ${
                 isActive('/') 
                   ? 'text-white font-semibold' 
                   : 'text-white opacity-90 hover:opacity-100'
@@ -101,11 +89,12 @@ export function Header() {
             >
               <Link
                 to="/products"
-                className={`flex items-center space-x-1 text-sm font-medium transition-colors px-3 py-2 rounded-md ${
+                className={`flex items-center space-x-1 text-xl font-medium transition-colors px-3 py-2 rounded-md ${
                   isActive('/products') 
                     ? 'text-white font-semibold' 
-                    : 'text-white opacity-90 hover:opacity-100 hover:bg-white hover:bg-opacity-10'
+                    : 'text-white opacity-90 hover:opacity-100'
                 }`}
+                style={isActive('/products') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
               >
                 <span>Productos</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
@@ -134,51 +123,31 @@ export function Header() {
                       </div>
                     </div>
                     
-                    {/* Featured Products */}
-                    <div>
-                      <h3 className="text-sm font-semibold mb-3" style={{ color: '#B892D5' }}>Productos Destacados</h3>
-                      <div className="space-y-3">
-                        {featuredProducts.map((product, index) => (
-                          <div key={index} className="flex items-center justify-between">
-                            <div>
-                              <div className="flex items-center space-x-2">
-                                <h4 className="text-sm font-medium" style={{ color: '#B892D5' }}>{product.name}</h4>
-                                {product.badge && (
-                                  <span className={`px-2 py-1 text-xs rounded-full ${
-                                    product.badge === 'Popular' ? 'text-white' : 'text-white'
-                                  }`} style={{ 
-                                    backgroundColor: product.badge === 'Popular' ? '#B892D5' : '#E29AEE' 
-                                  }}>
-                                    {product.badge}
-                                  </span>
-                                )}
-                              </div>
-                              <p className="text-xs" style={{ color: '#9C989F' }}>{product.category}</p>
-                            </div>
-                            <span className="text-sm font-semibold" style={{ color: '#B892D5' }}>{product.price}</span>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* Popular Brands */}
-                      <div className="mt-4">
-                        <h4 className="text-sm font-semibold mb-2" style={{ color: '#B892D5' }}>Marcas Populares</h4>
-                        <div className="grid grid-cols-3 gap-2">
-                          {popularBrands.flat().map((brand, index) => (
-                            <div key={index} className="text-xs cursor-pointer transition-colors" style={{ color: '#9C989F' }}>
-                              {brand}
-                            </div>
-                          ))}
+                    {/* Suscripción Destacada */}
+                    <div style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)' }} className="rounded-lg p-4 text-white">
+                      <h3 className="text-lg font-bold mb-2">Suscripción a Lentes de Contacto</h3>
+                      <p className="text-sm opacity-90 mb-3">
+                        Recibe tus lentes de contacto mensualmente con descuentos exclusivos
+                      </p>
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center space-x-2">
+                          <Circle className="h-3 w-3 fill-current" />
+                          <span className="text-xs">Envío gratuito mensual</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Circle className="h-3 w-3 fill-current" />
+                          <span className="text-xs">20% descuento garantizado</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Circle className="h-3 w-3 fill-current" />
+                          <span className="text-xs">Cancela cuando quieras</span>
                         </div>
                       </div>
-                      
                       <Link 
-                        to="/products"
-                        className="mt-4 flex items-center justify-center w-full px-4 py-2 rounded-lg transition-colors text-sm font-medium text-white"
-                        style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)' }}
+                        to="/lentes-contacto"
+                        className="inline-block w-full px-3 py-2 bg-white text-purple-600 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors text-center"
                       >
-                        <Glasses className="h-4 w-4 mr-2" />
-                        Ver todos los productos
+                        ¡Suscríbete Ahora!
                       </Link>
                     </div>
                   </div>
@@ -188,7 +157,7 @@ export function Header() {
             
             <Link
               to="/services"
-              className={`text-sm font-medium transition-colors ${
+              className={`text-xl font-medium transition-colors ${
                 isActive('/services') 
                   ? 'text-white font-semibold' 
                   : 'text-white opacity-90 hover:opacity-100'
@@ -198,8 +167,19 @@ export function Header() {
             </Link>
             
             <Link
+              to="/lentes-contacto"
+              className={`text-xl font-medium transition-colors ${
+                isActive('/lentes-contacto') || isActive('/subscription')
+                  ? 'text-white font-semibold' 
+                  : 'text-white opacity-90 hover:opacity-100'
+              }`}
+            >
+              Suscripción
+            </Link>
+            
+            <Link
               to="/testimonials"
-              className={`text-sm font-medium transition-colors ${
+              className={`text-xl font-medium transition-colors ${
                 isActive('/testimonials') 
                   ? 'text-white font-semibold' 
                   : 'text-white opacity-90 hover:opacity-100'
@@ -215,7 +195,17 @@ export function Header() {
             <Button 
               variant="outline" 
               size="sm" 
-              className="hidden sm:flex border-white text-white hover:bg-white hover:text-purple-600"
+              className="hidden sm:flex border-white text-white"
+              style={{ 
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+              }}
               onClick={() => setIsContactModalOpen(true)}
             >
               Contacto
@@ -226,7 +216,7 @@ export function Header() {
               <div className="flex items-center space-x-3">
                 <div className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
                   <User className="h-5 w-5 text-white" />
-                  <span className="text-sm text-white font-medium">
+                  <span className="text-xl text-white font-medium">
                     Hola, {user.firstName || user.email.split('@')[0]}
                   </span>
                 </div>
@@ -300,7 +290,7 @@ export function Header() {
                     <Link
                       key={index}
                       to={category.href}
-                      className="flex items-center space-x-2 px-2 py-1 text-sm text-gray-600 hover:text-horus-purple"
+                      className="flex items-center space-x-2 px-2 py-1 text-sm text-white opacity-90 hover:opacity-100"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <category.icon className="h-4 w-4" />
@@ -314,21 +304,36 @@ export function Header() {
                 to="/services"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/services') 
-                    ? 'text-horus-purple bg-horus-purple/10' 
-                    : 'text-horus-gray hover:text-horus-purple hover:bg-horus-purple/10'
+                    ? 'text-white font-semibold' 
+                    : 'text-white opacity-90 hover:opacity-100'
                 }`}
+                style={isActive('/services') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Servicios
               </Link>
               
               <Link
+                to="/lentes-contacto"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  isActive('/lentes-contacto') || isActive('/subscription')
+                    ? 'text-white font-semibold' 
+                    : 'text-white opacity-90 hover:opacity-100'
+                }`}
+                style={isActive('/lentes-contacto') || isActive('/subscription') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Suscripción
+              </Link>
+              
+              <Link
                 to="/testimonials"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/testimonials') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    ? 'text-white font-semibold' 
+                    : 'text-white opacity-90 hover:opacity-100'
                 }`}
+                style={isActive('/testimonials') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Testimonios
@@ -339,36 +344,32 @@ export function Header() {
                   setIsContactModalOpen(true);
                   setIsMenuOpen(false);
                 }}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive('/contact') 
-                    ? 'text-primary-600 bg-primary-50' 
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                } w-full text-left`}
+                className="block px-3 py-2 rounded-md text-base font-medium text-white opacity-90 hover:opacity-100 w-full text-left"
               >
                 Contacto
               </button>
 
               {/* User Actions - Mobile */}
               {user ? (
-                <div className="border-t pt-3 mt-3">
+                <div className="border-t pt-3 mt-3" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
                   <div className="flex items-center px-3 py-2">
-                    <User className="h-5 w-5 text-gray-400 mr-2" />
-                    <span className="text-sm text-gray-700 font-medium">
+                    <User className="h-5 w-5 text-white mr-2" />
+                    <span className="text-sm text-white font-medium">
                       {user.firstName || user.email}
                     </span>
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-red-600 hover:text-red-700 hover:bg-red-50"
+                    className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white opacity-90 hover:opacity-100"
                   >
                     Cerrar Sesión
                   </button>
                 </div>
               ) : (
-                <div className="border-t pt-3 mt-3">
+                <div className="border-t pt-3 mt-3" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
                   <Link
                     to="/auth"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-primary-600 hover:text-primary-700 hover:bg-primary-50"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-white opacity-90 hover:opacity-100"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Iniciar Sesión

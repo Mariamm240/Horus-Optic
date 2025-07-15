@@ -15,12 +15,12 @@ export function HomePage() {
     },
     {
       id: 2,
-      name: 'Monturas Elegantes',
-      price: 129.99,
+      name: 'Lentes de Contacto Acuvue Oasys',
+      price: 149.99,
       rating: 4.9,
-      image: '/Media/CATALOGO WEB 600 x400/2.png',
-      category: 'Monturas',
-      badge: 'Nuevo'
+      image: '/Media/Lentes de contacto/34.png',
+      category: 'Lentes de Contacto',
+      badge: 'Más Vendido'
     },
     {
       id: 3,
@@ -33,12 +33,12 @@ export function HomePage() {
     },
     {
       id: 4,
-      name: 'Monturas Deportivas',
-      price: 249.99,
-      rating: 4.9,
-      image: '/Media/CATALOGO WEB 600 x400/4.png',
-      category: 'Deportivas',
-      badge: 'Deportivo'
+      name: 'Lentes de Contacto de Color',
+      price: 169.99,
+      rating: 4.8,
+      image: '/Media/Lentes de contacto/28.png',
+      category: 'Lentes de Contacto',
+      badge: 'Nuevo'
     }
   ];
 
@@ -153,6 +153,110 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Contact Lens Subscription Section */}
+      <section className="py-20" style={{ background: 'linear-gradient(135deg, #B892D5 0%, #E29AEE 100%)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="text-white">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Suscripción de Lentes de Contacto
+              </h2>
+              <p className="text-xl mb-8 opacity-90 leading-relaxed">
+                Recibe tus lentes de contacto directamente en casa cada mes. 
+                Sin preocupaciones, sin olvidos, con la mejor calidad y precio garantizado.
+              </p>
+              
+              {/* Benefits */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-3">
+                    <Truck className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="text-lg">Envío gratuito a domicilio</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-3">
+                    <Calendar className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="text-lg">Entrega automática mensual</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-3">
+                    <Star className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="text-lg">20% de descuento vs compra individual</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-3">
+                    <Eye className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="text-lg">Cancela o modifica cuando quieras</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/lentes-contacto">
+                  <Button 
+                    size="lg" 
+                    style={{ backgroundColor: '#FFFFFF', color: '#B892D5' }}
+                    className="hover:opacity-90 px-8 py-4 text-lg font-semibold"
+                  >
+                    Suscribirme Ahora
+                  </Button>
+                </Link>
+                <Link to="/lentes-contacto">
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    style={{ borderColor: '#FFFFFF', color: '#FFFFFF' }}
+                    className="hover:bg-white hover:bg-opacity-10 px-8 py-4 text-lg"
+                  >
+                    Ver Planes
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm">
+                    <img 
+                      src="/Media/Lentes de contacto/24.png" 
+                      alt="Lentes de contacto diarios" 
+                      className="w-full h-32 object-cover rounded-lg mb-4"
+                    />
+                    <h3 className="text-white font-bold text-lg mb-2">Lentes Diarios</h3>
+                    <p className="text-white text-sm opacity-90">Comodidad y practicidad para uso diario</p>
+                    <div className="mt-3 text-white font-bold text-xl">$25/mes</div>
+                  </div>
+                </div>
+                <div className="space-y-4 mt-8">
+                  <div className="bg-white bg-opacity-20 rounded-2xl p-6 backdrop-blur-sm">
+                    <img 
+                      src="/Media/Lentes de contacto/25.png" 
+                      alt="Lentes de contacto mensuales" 
+                      className="w-full h-32 object-cover rounded-lg mb-4"
+                    />
+                    <h3 className="text-white font-bold text-lg mb-2">Lentes Mensuales</h3>
+                    <p className="text-white text-sm opacity-90">Durabilidad y economía para uso prolongado</p>
+                    <div className="mt-3 text-white font-bold text-xl">$15/mes</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating element */}
+              <div className="absolute -top-6 -right-6 bg-white rounded-xl p-4 shadow-lg">
+                <div className="text-center">
+                  <div className="text-2xl font-bold" style={{ color: '#B892D5' }}>50+</div>
+                  <div className="text-sm" style={{ color: '#9C989F' }}>Marcas disponibles</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -199,6 +303,64 @@ export function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Lens Gallery */}
+      <section className="py-20" style={{ backgroundColor: '#F8F9FA' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#B892D5' }}>Catálogo de Lentes de Contacto</h2>
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: '#9C989F' }}>
+              Descubre nuestra amplia selección de lentes de contacto de las mejores marcas mundiales
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-12">
+            {[
+              { image: '/Media/Lentes de contacto/30.png', name: 'Acuvue Oasys', type: 'Mensuales' },
+              { image: '/Media/Lentes de contacto/31.png', name: 'Dailies Total 1', type: 'Diarios' },
+              { image: '/Media/Lentes de contacto/32.png', name: 'Biofinity', type: 'Mensuales' },
+              { image: '/Media/Lentes de contacto/33.png', name: 'Air Optix', type: 'Mensuales' },
+              { image: '/Media/Lentes de contacto/40.png', name: 'Acuvue Moist', type: 'Diarios' },
+              { image: '/Media/Lentes de contacto/41.png', name: 'PureVision 2', type: 'Mensuales' },
+              { image: '/Media/Lentes de contacto/42.png', name: 'FreshLook', type: 'Color' },
+              { image: '/Media/Lentes de contacto/43.png', name: 'Proclear', type: 'Mensuales' },
+              { image: '/Media/Lentes de contacto/44.png', name: 'Avaira', type: 'Mensuales' },
+              { image: '/Media/Lentes de contacto/WhatsApp Image 2025-04-28 at 10.37.27_e7f19a8e.jpg', name: 'Premium Collection', type: 'Especiales' }
+            ].map((product, index) => (
+              <div key={index} className="group">
+                <div className="aspect-square overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 bg-white">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="mt-3 text-center">
+                  <h3 className="font-semibold text-sm" style={{ color: '#B892D5' }}>{product.name}</h3>
+                  <p className="text-xs mt-1" style={{ color: '#9C989F' }}>{product.type}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button 
+              size="lg"
+              style={{ backgroundColor: '#B892D5', color: '#FFFFFF' }}
+              className="mr-4"
+            >
+              Ver Catálogo Completo
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              style={{ borderColor: '#B892D5', color: '#B892D5' }}
+            >
+              Iniciar Suscripción
+            </Button>
           </div>
         </div>
       </section>

@@ -12,6 +12,11 @@ import { ServicesPage } from './pages/ServicesPage';
 import { CartPage } from './pages/CartPage';
 import { AboutPage } from './pages/AboutPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
+import { ContactPage } from './pages/ContactPage';
+import { ContactLensSubscriptionPage } from './pages/ContactLensSubscriptionPage';
+// Demo pages
+import { CartDemoPage } from './pages/CartDemoPage';
+// import ProductDetailDemoPage from './pages/ProductDetailDemoPage'; // Temporalmente comentado
 
 function AppContent() {
   const { user, loading } = useAuth();
@@ -27,8 +32,8 @@ function AppContent() {
     );
   }
 
-  // Permitir acceso de invitado para navegación general, requerir auth para carrito y acciones sensibles
-  const allowGuestAccess = true;
+  // TEMPORALMENTE DESHABILITADAS TODAS LAS RESTRICCIONES DE AUTENTICACIÓN
+  // Permitir acceso completo para desarrollo y testing
 
   return (
     <Router>
@@ -40,91 +45,99 @@ function AppContent() {
         <Route
           path="/products"
           element={
-            user || allowGuestAccess ? (
-              <Layout>
-                <ProductsPage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Layout>
+              <ProductsPage />
+            </Layout>
           }
         />
         <Route
           path="/products/:id"
           element={
-            user || allowGuestAccess ? (
-              <Layout>
-                <ProductDetailPage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Layout>
+              <ProductDetailPage />
+            </Layout>
           }
         />
         <Route
           path="/cart"
           element={
-            user ? (
-              <Layout>
-                <CartPage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Layout>
+              <CartPage />
+            </Layout>
           }
         />
         <Route
+          path="/cart-demo"
+          element={
+            <Layout>
+              <CartDemoPage />
+            </Layout>
+          }
+        />
+        {/* Temporalmente comentado
+        <Route
+          path="/product/:id"
+          element={
+            <Layout>
+              <ProductDetailDemoPage />
+            </Layout>
+          }
+        />
+        */}
+        <Route
           path="/about"
           element={
-            user || allowGuestAccess ? (
-              <Layout>
-                <AboutPage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Layout>
+              <AboutPage />
+            </Layout>
           }
         />
         <Route
           path="/contact"
           element={
-            <Navigate to="/" replace />
+            <Layout>
+              <ContactPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/subscription"
+          element={
+            <Layout>
+              <ContactLensSubscriptionPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/lentes-contacto"
+          element={
+            <Layout>
+              <ContactLensSubscriptionPage />
+            </Layout>
           }
         />
         <Route
           path="/services"
           element={
-            user || allowGuestAccess ? (
-              <Layout>
-                <ServicesPage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Layout>
+              <ServicesPage />
+            </Layout>
           }
         />
         <Route
           path="/testimonials"
           element={
-            user || allowGuestAccess ? (
-              <Layout>
-                <TestimonialsPage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Layout>
+              <TestimonialsPage />
+            </Layout>
           }
         />
         <Route
           path="/"
           element={
-            user || allowGuestAccess ? (
-              <Layout>
-                <HomePage />
-              </Layout>
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+            <Layout>
+              <HomePage />
+            </Layout>
           }
         />
         <Route path="*" element={<Navigate to="/" replace />} />

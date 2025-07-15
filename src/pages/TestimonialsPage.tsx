@@ -1,62 +1,10 @@
 import { useState } from 'react';
-import { Star, Instagram, Heart, MessageCircle, Share, ThumbsUp } from 'lucide-react';
+import { Star, Instagram, ThumbsUp } from 'lucide-react';
 import { Button } from '../components/ui';
+import { InstagramFeed } from '../components/InstagramFeed';
 
 export function TestimonialsPage() {
   const [activeTab, setActiveTab] = useState('instagram');
-
-  const instagramReels = [
-    {
-      id: 1,
-      username: 'maria_garcia',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=100&h=100&fit=crop&crop=face',
-      image: '/Media/CATALOGO WEB 600 x400/_MG_2505.jpg',
-      caption: '¡Me encantan mis nuevas gafas de sol de @horus_optic_! La calidad es increíble y el servicio fue excelente. #gafasdesol #horusoptic',
-      likes: 23442,
-      comments: 156,
-      time: '2 días'
-    },
-    {
-      id: 2,
-      username: 'carlos_rodriguez',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
-      image: '/Media/CATALOGO WEB 600 x400/_MG_2507.jpg',
-      caption: 'Gracias a @horus_optic_ por estas gafas graduadas tan cómodas. La atención personalizada marca la diferencia. #visiónperfecta',
-      likes: 18723,
-      comments: 89,
-      time: '4 días'
-    },
-    {
-      id: 3,
-      username: 'laura_martinez',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-      image: '/Media/CATALOGO WEB 600 x400/_MG_2508.jpg',
-      caption: 'Mis nuevas gafas deportivas de @horus_optic_ son perfectas para mis entrenamientos. ¡Súper recomendadas! #deportes #gafas',
-      likes: 31256,
-      comments: 203,
-      time: '1 semana'
-    },
-    {
-      id: 4,
-      username: 'javier_lopez',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
-      image: '/Media/CATALOGO WEB 600 x400/_MG_2509.jpg',
-      caption: 'Primera vez comprando en @horus_optic_ y no será la última. Excelente asesoramiento y productos de primera calidad. #clientesatisfecho',
-      likes: 27638,
-      comments: 134,
-      time: '1 semana'
-    },
-    {
-      id: 5,
-      username: 'ana_fernandez',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
-      image: '/Media/CATALOGO WEB 600 x400/_MG_2510.jpg',
-      caption: 'Mis lentes de contacto de @horus_optic_ son tan cómodos que ni siquiera noto que los llevo puestos. ¡Gracias por el gran servicio! #lentesdecontacto',
-      likes: 19827,
-      comments: 98,
-      time: '2 semanas'
-    }
-  ];
 
   const googleReviews = [
     {
@@ -226,80 +174,9 @@ export function TestimonialsPage() {
             </div>
           </div>
 
-          {/* Instagram Reels Section */}
+          {/* Instagram Feed Section */}
           {activeTab === 'instagram' && (
-            <div>
-              <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">Reels de Instagram</h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Descubre lo que nuestros clientes comparten sobre sus experiencias
-                </p>
-                <a 
-                  href="https://www.instagram.com/horus_optic_/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <Button className="mt-6 bg-pink-500 hover:bg-pink-600">
-                    <Instagram className="mr-2 h-5 w-5" />
-                    Seguir @horus_optic_
-                  </Button>
-                </a>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {instagramReels.map((reel) => (
-                  <div key={reel.id} className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div className="relative">
-                      <img 
-                        src={reel.image} 
-                        alt={`Instagram Reel de ${reel.username}`}
-                        className="w-full h-80 object-cover"
-                      />
-                      <div className="absolute top-4 right-4 bg-pink-500 text-white p-2 rounded-full">
-                        <Instagram className="w-4 h-4" />
-                      </div>
-                    </div>
-                    
-                    <div className="p-6">
-                      <div className="flex items-center mb-4">
-                        <img 
-                          src={reel.avatar} 
-                          alt={reel.username}
-                          className="w-12 h-12 rounded-full mr-3 border-2 border-pink-200"
-                        />
-                        <div>
-                          <h4 className="font-bold text-gray-900">{reel.username}</h4>
-                          <span className="text-sm text-gray-500">{reel.time}</span>
-                        </div>
-                      </div>
-                      
-                      <p className="text-gray-700 mb-4 leading-relaxed">{reel.caption}</p>
-                      
-                      <div className="flex items-center justify-between text-gray-500">
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center">
-                            <Heart className="w-5 h-5 mr-1 text-red-500" />
-                            <span className="font-medium">{reel.likes.toLocaleString()}</span>
-                          </div>
-                          <div className="flex items-center">
-                            <MessageCircle className="w-5 h-5 mr-1" />
-                            <span>{reel.comments}</span>
-                          </div>
-                        </div>
-                        <Share className="w-5 h-5 hover:text-pink-500 cursor-pointer" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="text-center mt-12">
-                <Button variant="outline" size="lg" className="px-8 py-4 text-lg">
-                  Ver más reels
-                </Button>
-              </div>
-            </div>
+            <InstagramFeed />
           )}
 
           {/* Google Reviews Section */}

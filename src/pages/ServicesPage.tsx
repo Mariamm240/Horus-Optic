@@ -235,7 +235,7 @@ export function ServicesPage() {
                 fontSize: '18px',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
               }}
-              className="hover:bg-white hover:text-blue-800 transition-all duration-200"
+              className="hover:bg-white transition-all duration-200 hover:text-purple-600"
             >
               Contactar
             </Button>
@@ -307,7 +307,7 @@ export function ServicesPage() {
                 
                 <Button 
                   style={{
-                    backgroundColor: '#1e40af',
+                    backgroundColor: '#B892D5',
                     color: '#ffffff',
                     fontWeight: '700',
                     width: '100%',
@@ -315,9 +315,9 @@ export function ServicesPage() {
                     fontSize: '16px',
                     borderRadius: '8px',
                     border: 'none',
-                    boxShadow: '0 4px 12px rgba(30,64,175,0.3)'
+                    boxShadow: '0 4px 12px rgba(184,146,213,0.3)'
                   }}
-                  className="hover:bg-blue-800 transition-all duration-200 transform hover:scale-105"
+                  className="hover:bg-purple-700 transition-all duration-200 transform hover:scale-105"
                   onClick={() => handleScheduleAppointment(service.title)}
                 >
                   <Calendar className="h-4 w-4 mr-2" style={{ color: '#ffffff' }} />
@@ -342,8 +342,8 @@ export function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center p-6 bg-white rounded-xl shadow-lg">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <benefit.icon className="h-8 w-8 text-blue-600" />
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'rgba(184, 146, 213, 0.1)' }}>
+                  <benefit.icon className="h-8 w-8" style={{ color: '#B892D5' }} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
@@ -366,10 +366,10 @@ export function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {process.map((step, index) => (
               <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
+                <div className="w-12 h-12 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold" style={{ backgroundColor: '#B892D5' }}>
                   {index + 1}
                 </div>
-                <div className="text-sm text-blue-600 font-medium mb-2">{step.step}</div>
+                <div className="text-sm font-medium mb-2" style={{ color: '#B892D5' }}>{step.step}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
               </div>
@@ -420,11 +420,11 @@ export function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-800 text-white relative">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="py-16 text-white relative" style={{ background: 'linear-gradient(135deg, #B892D5 0%, #E29AEE 100%)' }}>
+        <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4" style={{ color: '#ffffff', fontWeight: '700' }}>¿Listo para cuidar tu salud visual?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: '#e0f2fe', fontWeight: '500' }}>
+          <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: '#ffffff', fontWeight: '500', opacity: 0.9 }}>
             Agenda una cita con nuestros profesionales y descubre la diferencia de un servicio de optometría de calidad
           </p>
           <div className="flex gap-4 justify-center">
@@ -432,7 +432,7 @@ export function ServicesPage() {
               size="lg" 
               style={{
                 backgroundColor: '#ffffff',
-                color: '#1e40af',
+                color: '#B892D5',
                 border: '3px solid #ffffff',
                 fontWeight: '700',
                 padding: '12px 32px',
@@ -456,7 +456,7 @@ export function ServicesPage() {
                 fontSize: '18px',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
               }}
-              className="hover:bg-white hover:text-blue-800 transition-all duration-200"
+              className="hover:bg-white hover:text-purple-600 transition-all duration-200"
             >
               <Phone className="h-5 w-5 mr-2" style={{ color: '#ffffff' }} />
               Contactar

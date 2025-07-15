@@ -14,7 +14,7 @@ interface RegisterFormProps {
 export function RegisterForm({ onSuccess }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const { register: registerUser, loading } = useAuth();
+  const { register: registerUser, loading, signInWithGoogle, signInWithFacebook } = useAuth();
   
   const {
     register,
@@ -34,18 +34,48 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      toast.success('Registrándose con Google...');
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Error al registrarse con Google');
+    }
+  };
+
+  const handleFacebookSignIn = async () => {
+    try {
+      await signInWithFacebook();
+      toast.success('Registrándose con Facebook...');
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Error al registrarse con Facebook');
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
       <h1 className="text-2xl font-bold mb-4" style={{ color: '#B892D5' }}>Crear Cuenta</h1>
       
       {/* Social Icons */}
       <div className="flex justify-center space-x-3 mb-5">
-        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
+        <button 
+          type="button"
+          onClick={handleGoogleSignIn}
+          disabled={loading}
+          className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors hover:bg-gray-50 disabled:opacity-50" 
+          style={{ borderColor: '#B892D5', color: '#B892D5' }}
+        >
           <FaGooglePlusG className="text-base" />
-        </a>
-        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
+        </button>
+        <button 
+          type="button"
+          onClick={handleFacebookSignIn}
+          disabled={loading}
+          className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors hover:bg-gray-50 disabled:opacity-50" 
+          style={{ borderColor: '#B892D5', color: '#B892D5' }}
+        >
           <FaFacebookF className="text-base" />
-        </a>
+        </button>
         <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
           <FaGithub className="text-base" />
         </a>
