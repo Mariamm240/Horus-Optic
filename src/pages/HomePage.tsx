@@ -1,46 +1,10 @@
 import { Eye, Truck, Users, ShoppingBag, Calendar, Star, MapPin, Phone, Mail, Clock, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui';
+import { getFeaturedProducts } from '../lib/productData';
 
 export function HomePage() {
-  const featuredProducts = [
-    {
-      id: 1,
-      name: 'Ray-Ban Wayfarer Classic',
-      price: 149.99,
-      rating: 4.8,
-      image: '/Media/CATALOGO WEB 600 x400/1.png',
-      category: 'Gafas de Sol',
-      badge: 'Bestseller'
-    },
-    {
-      id: 2,
-      name: 'Lentes de Contacto Acuvue Oasys',
-      price: 149.99,
-      rating: 4.9,
-      image: '/Media/Lentes de contacto/34.png',
-      category: 'Lentes de Contacto',
-      badge: 'Más Vendido'
-    },
-    {
-      id: 3,
-      name: 'Gafas de Sol Premium',
-      price: 299.99,
-      rating: 4.7,
-      image: '/Media/CATALOGO WEB 600 x400/3.png',
-      category: 'Gafas de Sol',
-      badge: 'Premium'
-    },
-    {
-      id: 4,
-      name: 'Lentes de Contacto de Color',
-      price: 169.99,
-      rating: 4.8,
-      image: '/Media/Lentes de contacto/28.png',
-      category: 'Lentes de Contacto',
-      badge: 'Nuevo'
-    }
-  ];
+  const featuredProducts = getFeaturedProducts(4);
 
   const testimonials = [
     {
@@ -269,22 +233,26 @@ export function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredProducts.map((product) => (
-              <div key={product.id} className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group" style={{ backgroundColor: '#FFFFFF' }}>
+              <Link 
+                key={product.id}
+                to={`/product/${product.id}`}
+                className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group bg-white"
+              >
                 <div className="relative">
                   <img
-                    src={product.image}
+                    src={product.imageUrl}
                     alt={product.name}
                     className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: '#E29AEE', color: '#FFFFFF' }}>
-                    {product.badge}
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium bg-purple-400 text-white">
+                    {product.isBestseller ? 'Bestseller' : product.isNew ? 'Nuevo' : 'Premium'}
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-1" style={{ color: '#B892D5' }}>{product.name}</h3>
-                  <p className="text-sm mb-3" style={{ color: '#9C989F' }}>{product.category}</p>
+                  <h3 className="font-semibold text-lg mb-1 text-purple-400">{product.name}</h3>
+                  <p className="text-sm mb-3 text-gray-500">{product.brand}</p>
                   <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold" style={{ color: '#B892D5' }}>
+                    <div className="text-xl font-bold text-purple-400">
                       ${product.price}
                     </div>
                     <div className="flex items-center">
@@ -301,7 +269,7 @@ export function HomePage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

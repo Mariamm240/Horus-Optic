@@ -7,7 +7,7 @@ import { Layout } from './components/layout';
 import { AuthPage } from './pages/AuthPage';
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
-import { ProductDetailPage } from './pages/ProductDetailPage';
+import { ModernProductDetail } from './components/products/ModernProductDetail';
 import { ServicesPage } from './pages/ServicesPage';
 import { CartPage } from './pages/CartPage';
 import { AboutPage } from './pages/AboutPage';
@@ -16,7 +16,6 @@ import { ContactPage } from './pages/ContactPage';
 import { ContactLensSubscriptionPage } from './pages/ContactLensSubscriptionPage';
 // Demo pages
 import { CartDemoPage } from './pages/CartDemoPage';
-// import ProductDetailDemoPage from './pages/ProductDetailDemoPage'; // Temporalmente comentado
 
 function AppContent() {
   const { user, loading } = useAuth();
@@ -51,10 +50,18 @@ function AppContent() {
           }
         />
         <Route
+          path="/product/:id"
+          element={
+            <Layout>
+              <ModernProductDetail />
+            </Layout>
+          }
+        />
+        <Route
           path="/products/:id"
           element={
             <Layout>
-              <ProductDetailPage />
+              <ModernProductDetail />
             </Layout>
           }
         />

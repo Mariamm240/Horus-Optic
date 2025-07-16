@@ -2,7 +2,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { useCart } from '../../hooks/useCart';
 import { Button } from '../ui';
 import { ContactModal } from '../ContactModal';
-import { ShoppingCart, User, Menu, X, Eye, ChevronDown, Sun, Circle, Target, Users, Glasses } from 'lucide-react';
+import { ShoppingCart, User, Menu, X, Eye, ChevronDown, Sun, Circle, Target } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 
@@ -48,12 +48,34 @@ export function Header() {
   const isActive = (path: string) => location.pathname === path;
 
   const productCategories = [
-    { name: 'Gafas de Sol', icon: Sun, href: '/products?category=gafas-sol' },
-    { name: 'Gafas Graduadas', icon: Eye, href: '/products?category=gafas-graduadas' },
-    { name: 'Lentes de Contacto', icon: Circle, href: '/products?category=lentes-contacto' },
-    { name: 'Accesorios', icon: Target, href: '/products?category=accesorios' },
-    { name: 'Gafas para Niños', icon: Users, href: '/products?category=gafas-ninos' },
-    { name: 'Gafas Deportivas', icon: Glasses, href: '/products?category=gafas-deportivas' }
+    { 
+      name: 'Gafas de Sol', 
+      icon: Sun, 
+      href: '/products?category=gafas-sol',
+      description: 'Protección UV y estilo',
+      count: 4
+    },
+    { 
+      name: 'Gafas de Lectura', 
+      icon: Eye, 
+      href: '/products?category=gafas-lectura',
+      description: 'Cómoda lectura y trabajo',
+      count: 2
+    },
+    { 
+      name: 'Lentes de Contacto', 
+      icon: Circle, 
+      href: '/products?category=lentes-contacto',
+      description: 'Visión clara y libertad',
+      count: 2
+    },
+    { 
+      name: 'Accesorios', 
+      icon: Target, 
+      href: '/products?category=accesorios',
+      description: 'Cuidado y mantenimiento',
+      count: 2
+    }
   ];
 
   return (
@@ -102,52 +124,47 @@ export function Header() {
               
               {/* Dropdown Menu */}
               {isProductsDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-96 bg-white rounded-lg shadow-xl border border-gray-200 p-6 z-50">
-                  <div className="grid grid-cols-2 gap-6">
-                    {/* Categories */}
-                    <div>
-                      <h3 className="text-sm font-semibold mb-3" style={{ color: '#B892D5' }}>Categorías</h3>
-                      <div className="space-y-2">
-                        {productCategories.map((category, index) => (
-                          <Link
-                            key={index}
-                            to={category.href}
-                            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 text-sm transition-colors"
-                          >
-                            <div style={{ background: 'rgba(184, 146, 213, 0.1)' }} className="w-8 h-8 rounded-lg flex items-center justify-center">
-                              <category.icon className="h-4 w-4" style={{ color: '#B892D5' }} />
+                <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50">
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4">Nuestros Productos</h3>
+                    <div className="space-y-3">
+                      {productCategories.map((category, index) => (
+                        <Link
+                          key={index}
+                          to={category.href}
+                          className="group flex items-center justify-between p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200 border border-transparent hover:border-blue-200"
+                        >
+                          <div className="flex items-center space-x-4">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                              <category.icon className="h-6 w-6 text-blue-600" />
                             </div>
-                            <span style={{ color: '#9C989F' }} className="hover:text-gray-700">{category.name}</span>
-                          </Link>
-                        ))}
-                      </div>
+                            <div>
+                              <div className="font-semibold text-gray-900 group-hover:text-blue-900">
+                                {category.name}
+                              </div>
+                              <div className="text-sm text-gray-500 group-hover:text-blue-600">
+                                {category.description}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-600 rounded-full group-hover:bg-blue-100 group-hover:text-blue-700">
+                              {category.count}
+                            </span>
+                            <ChevronDown className="h-4 w-4 text-gray-400 rotate-[-90deg] group-hover:text-blue-600" />
+                          </div>
+                        </Link>
+                      ))}
                     </div>
-                    
-                    {/* Suscripción Destacada */}
-                    <div style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)' }} className="rounded-lg p-4 text-white">
-                      <h3 className="text-lg font-bold mb-2">Suscripción a Lentes de Contacto</h3>
-                      <p className="text-sm opacity-90 mb-3">
-                        Recibe tus lentes de contacto mensualmente con descuentos exclusivos
-                      </p>
-                      <div className="space-y-2 mb-4">
-                        <div className="flex items-center space-x-2">
-                          <Circle className="h-3 w-3 fill-current" />
-                          <span className="text-xs">Envío gratuito mensual</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Circle className="h-3 w-3 fill-current" />
-                          <span className="text-xs">20% descuento garantizado</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Circle className="h-3 w-3 fill-current" />
-                          <span className="text-xs">Cancela cuando quieras</span>
-                        </div>
-                      </div>
-                      <Link 
-                        to="/lentes-contacto"
-                        className="inline-block w-full px-3 py-2 bg-white text-purple-600 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors text-center"
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4">
+                    <div className="text-center">
+                      <Link
+                        to="/products"
+                        className="inline-flex items-center px-4 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                       >
-                        ¡Suscríbete Ahora!
+                        Ver todo el catálogo
                       </Link>
                     </div>
                   </div>
