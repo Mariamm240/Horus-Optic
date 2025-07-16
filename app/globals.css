@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fuentes optimizadas */
+  --font-sans: InterVariable, var(--font-inter), system-ui, ui-sans-serif, -apple-system, sans-serif;
+  
+  /* Sistema de colores personalizado de Horus Optic */
+  --color-primary: #B892D5;
+  --color-secondary: #E29AEE;
+  --color-accent: #4A90E2;
+  --color-neutral: #2C3E50;
+  
+  /* Paleta extendida */
+  --color-horus-purple-50: #f9f7fb;
+  --color-horus-purple-100: #f1ecf6;
+  --color-horus-purple-200: #e6dded;
+  --color-horus-purple-300: #d1c0df;
+  --color-horus-purple-400: #b892d5;
+  --color-horus-purple-500: #a576c7;
+  --color-horus-purple-600: #925bb4;
+  --color-horus-purple-700: #7b4a96;
+  --color-horus-purple-800: #683f7d;
+  --color-horus-purple-900: #553566;
+  
+  --color-horus-pink-50: #fef7ff;
+  --color-horus-pink-100: #fdeeff;
+  --color-horus-pink-200: #fbdeff;
+  --color-horus-pink-300: #f7c4fe;
+  --color-horus-pink-400: #e29aee;
+  --color-horus-pink-500: #d470db;
+  --color-horus-pink-600: #c451c8;
+  --color-horus-pink-700: #a73baa;
+  --color-horus-pink-800: #88328a;
+  --color-horus-pink-900: #702b70;
+}
+
+/* Estilos globales */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+}

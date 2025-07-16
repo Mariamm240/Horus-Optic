@@ -1,10 +1,11 @@
+'use client';
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { LoginForm } from '../components/auth/LoginForm';
-import { RegisterForm } from '../components/auth/RegisterForm';
-import { HomePage } from './HomePage';
+import { ModernLoginForm } from '../../src/components/auth/ModernLoginForm';
+import { ModernRegisterForm } from '../../src/components/auth/ModernRegisterForm';
 
-export function AuthPage() {
+export default function AuthPage() {
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
 
@@ -21,19 +22,14 @@ export function AuthPage() {
 
   return (
     <>
-      {/* Background - HomePage real */}
-      <div className="fixed inset-0 z-30">
-        <HomePage />
-      </div>
-
       {/* Modal Container - Click outside to close */}
       <div 
-        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
         onClick={handleBackgroundClick}
       >
         {/* Modal Content */}
         <div 
-          className={`relative bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-4xl min-h-[480px] transition-all duration-600 ease-in-out ${isActive ? 'active' : ''}`}
+          className={`relative bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-4xl min-h-[500px] transition-all duration-600 ease-in-out ${isActive ? 'active' : ''}`}
           onClick={handleModalClick}
         >
         
@@ -42,13 +38,13 @@ export function AuthPage() {
           <div className="bg-white flex items-center justify-center flex-col px-10 h-full">
             <div className="flex items-center justify-center mb-8">
               <img
-                src="/Logo1.png?v=1"
+                src="/Logo1.png"
                 alt="Logo Horus Optic"
                 className="h-16 w-16 object-contain"
                 style={{ background: 'transparent' }}
               />
             </div>
-            <LoginForm />
+            <ModernLoginForm />
           </div>
         </div>
 
@@ -61,13 +57,13 @@ export function AuthPage() {
           <div className="bg-white flex items-center justify-center flex-col px-10 h-full">
             <div className="flex items-center justify-center mb-8">
               <img
-                src="/Logo1.png?v=1"
+                src="/Logo1.png"
                 alt="Logo Horus Optic"
                 className="h-16 w-16 object-contain"
                 style={{ background: 'transparent' }}
               />
             </div>
-            <RegisterForm />
+            <ModernRegisterForm />
           </div>
         </div>
 
@@ -78,8 +74,7 @@ export function AuthPage() {
             : 'rounded-l-[150px] rounded-r-[100px]'
         }`}>
           <div 
-            style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)' }}
-            className={`h-full relative -left-full w-[200%] transform transition-all duration-600 ease-in-out text-white ${
+            className={`h-full relative -left-full w-[200%] transform transition-all duration-600 ease-in-out text-white bg-gradient-to-r from-purple-400 via-pink-400 to-purple-500 ${
               isActive ? 'translate-x-1/2' : 'translate-x-0'
             }`}
           >
@@ -94,15 +89,7 @@ export function AuthPage() {
               </p>
               <button
                 onClick={toggleToLogin}
-                className="bg-transparent border border-white text-white text-xs py-3 px-11 rounded-lg font-semibold tracking-wider uppercase cursor-pointer transition-all duration-300"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#FFFFFF';
-                  e.currentTarget.style.color = '#B892D5';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#FFFFFF';
-                }}
+                className="bg-transparent border border-white text-white text-xs py-3 px-11 rounded-lg font-semibold tracking-wider uppercase cursor-pointer transition-all duration-300 hover:bg-white hover:text-purple-500"
               >
                 Iniciar Sesión
               </button>
@@ -118,15 +105,7 @@ export function AuthPage() {
               </p>
               <button
                 onClick={toggleToRegister}
-                className="bg-transparent border border-white text-white text-xs py-3 px-11 rounded-lg font-semibold tracking-wider uppercase cursor-pointer transition-all duration-300"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#FFFFFF';
-                  e.currentTarget.style.color = '#B892D5';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                  e.currentTarget.style.color = '#FFFFFF';
-                }}
+                className="bg-transparent border border-white text-white text-xs py-3 px-11 rounded-lg font-semibold tracking-wider uppercase cursor-pointer transition-all duration-300 hover:bg-white hover:text-purple-500"
               >
                 Registrarse
               </button>

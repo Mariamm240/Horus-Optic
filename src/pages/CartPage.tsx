@@ -2,7 +2,7 @@ import { useCart } from '../hooks/useCart';
 import { Button, Card, CardContent, CardHeader } from '../components/ui';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { formatPrice } from '../lib/utils';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export function CartPage() {
   const { cart, updateCartItem, removeFromCart, clearCart, loading } = useCart();
@@ -16,7 +16,7 @@ export function CartPage() {
           <p className="mb-8" style={{ color: '#9C989F' }}>
             Agrega algunos productos a tu carrito para comenzar a comprar.
           </p>
-          <Link to="/products">
+          <Link href="/products">
             <Button size="lg" style={{ backgroundColor: '#B892D5', color: '#FFFFFF' }}>
               Explorar Productos
             </Button>
@@ -153,7 +153,7 @@ export function CartPage() {
                 <Button className="w-full" size="lg">
                   Proceder al Pago
                 </Button>
-                <Link to="/products">
+                <Link href="/products">
                   <Button variant="outline" className="w-full">
                     Continuar Comprando
                   </Button>

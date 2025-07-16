@@ -3,13 +3,14 @@ import { useCart } from '../../hooks/useCart';
 import { Button } from '../ui';
 import { ContactModal } from '../ContactModal';
 import { ShoppingCart, User, Menu, X, Eye, ChevronDown, Sun, Circle, Target } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 
 export function Header() {
   const { user, logout } = useAuth();
   const { getTotalItems } = useCart();
-  const location = useLocation();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -45,7 +46,7 @@ export function Header() {
     };
   }, []);
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   const productCategories = [
     { 
@@ -85,7 +86,7 @@ export function Header() {
         <div className="flex items-center justify-between h-32">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
+            <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
               <img src="/Logo.png?v=2" alt="Horus Optic" className="h-14 w-auto object-contain" />
             </Link>
           </div>
@@ -93,7 +94,7 @@ export function Header() {
           {/* Navigation - Desktop */}
           <nav className="hidden lg:flex items-center space-x-8">
             <Link
-              to="/"
+              href="/"
               className={`text-xl font-medium transition-colors ${
                 isActive('/') 
                   ? 'text-white font-semibold' 
@@ -110,7 +111,7 @@ export function Header() {
               onMouseLeave={handleMouseLeaveProducts}
             >
               <Link
-                to="/products"
+                href="/products"
                 className={`flex items-center space-x-1 text-xl font-medium transition-colors px-3 py-2 rounded-md ${
                   isActive('/products') 
                     ? 'text-white font-semibold' 
@@ -131,7 +132,7 @@ export function Header() {
                       {productCategories.map((category, index) => (
                         <Link
                           key={index}
-                          to={category.href}
+                          href={category.href}
                           className="group flex items-center justify-between p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-200 border border-transparent hover:border-blue-200"
                         >
                           <div className="flex items-center space-x-4">
@@ -161,7 +162,7 @@ export function Header() {
                   <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4">
                     <div className="text-center">
                       <Link
-                        to="/products"
+                        href="/products"
                         className="inline-flex items-center px-4 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                       >
                         Ver todo el catálogo
@@ -173,7 +174,7 @@ export function Header() {
             </div>
             
             <Link
-              to="/services"
+              href="/services"
               className={`text-xl font-medium transition-colors ${
                 isActive('/services') 
                   ? 'text-white font-semibold' 
@@ -184,7 +185,7 @@ export function Header() {
             </Link>
             
             <Link
-              to="/lentes-contacto"
+              href="/lentes-contacto"
               className={`text-xl font-medium transition-colors ${
                 isActive('/lentes-contacto') || isActive('/subscription')
                   ? 'text-white font-semibold' 
@@ -195,7 +196,7 @@ export function Header() {
             </Link>
             
             <Link
-              to="/testimonials"
+              href="/testimonials"
               className={`text-xl font-medium transition-colors ${
                 isActive('/testimonials') 
                   ? 'text-white font-semibold' 
@@ -247,7 +248,7 @@ export function Header() {
                 </Button>
               </div>
             ) : (
-              <Link to="/auth">
+              <Link href="/auth">
                 <Button size="sm" className="text-white shadow-sm transition-colors" style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)', border: 'none' }}>
                   <User className="h-4 w-4 mr-2" />
                   Iniciar Sesión
@@ -256,7 +257,7 @@ export function Header() {
             )}
 
             {/* Cart */}
-            <Link to="/cart" className="relative">
+            <Link href="/cart" className="relative">
               <button className="p-2 text-white hover:opacity-80 transition-opacity rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
                 <ShoppingCart className="h-6 w-6" />
                 {getTotalItems() > 0 && (
@@ -287,7 +288,7 @@ export function Header() {
             <div className="px-2 pt-2 pb-3 space-y-1" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
               {/* Navigation Links */}
               <Link
-                to="/"
+                href="/"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/') 
                     ? 'text-white font-semibold' 
@@ -306,7 +307,7 @@ export function Header() {
                   {productCategories.map((category, index) => (
                     <Link
                       key={index}
-                      to={category.href}
+                      href={category.href}
                       className="flex items-center space-x-2 px-2 py-1 text-sm text-white opacity-90 hover:opacity-100"
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -318,7 +319,7 @@ export function Header() {
               </div>
               
               <Link
-                to="/services"
+                href="/services"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/services') 
                     ? 'text-white font-semibold' 
@@ -331,7 +332,7 @@ export function Header() {
               </Link>
               
               <Link
-                to="/lentes-contacto"
+                href="/lentes-contacto"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/lentes-contacto') || isActive('/subscription')
                     ? 'text-white font-semibold' 
@@ -344,7 +345,7 @@ export function Header() {
               </Link>
               
               <Link
-                to="/testimonials"
+                href="/testimonials"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/testimonials') 
                     ? 'text-white font-semibold' 
@@ -385,7 +386,7 @@ export function Header() {
               ) : (
                 <div className="border-t pt-3 mt-3" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
                   <Link
-                    to="/auth"
+                    href="/auth"
                     className="block px-3 py-2 rounded-md text-base font-medium text-white opacity-90 hover:opacity-100"
                     onClick={() => setIsMenuOpen(false)}
                   >

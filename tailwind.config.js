@@ -1,18 +1,28 @@
-import { defineConfig } from '@tailwindcss/postcss'
-
-export default defineConfig({
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    "./index.html",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./index.html",
   ],
   theme: {
     extend: {
       colors: {
-        // Horus Optic Brand Colors
+        // Horus Optic Brand Colors (mantenemos compatibilidad v3/v4)
         'horus-purple': '#B892D5',
         'horus-pink': '#E29AEE',
         'horus-white': '#FFFFFF',
         'horus-gray': '#9C989F',
+        'horus-blue': '#4A90E2',
+        'horus-dark': '#2C3E50',
+        horus: {
+          purple: '#B892D5',
+          pink: '#E29AEE',
+          blue: '#4A90E2',
+          dark: '#2C3E50',
+        },
         primary: {
           50: '#f7f1fb',
           100: '#f0e4f7',
@@ -70,4 +80,5 @@ export default defineConfig({
       },
     },
   },
-})
+  plugins: [],
+}

@@ -1,5 +1,5 @@
 import { Eye, Truck, Users, ShoppingBag, Calendar, Star, MapPin, Phone, Mail, Clock, Instagram } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '../components/ui';
 import { getFeaturedProducts } from '../lib/productData';
 
@@ -75,7 +75,7 @@ export function HomePage() {
                 Ofrecemos exámenes visuales profesionales y asesoramiento personalizado.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/products">
+                <Link href="/products">
                   <Button size="lg" style={{ backgroundColor: '#B892D5', color: '#FFFFFF' }} className="hover:opacity-90 px-8 py-4 text-lg">
                     <ShoppingBag className="mr-2 h-6 w-6" />
                     Ver Catálogo
@@ -159,7 +159,7 @@ export function HomePage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/lentes-contacto">
+                <Link href="/lentes-contacto">
                   <Button 
                     size="lg" 
                     style={{ backgroundColor: '#FFFFFF', color: '#B892D5' }}
@@ -168,7 +168,7 @@ export function HomePage() {
                     Suscribirme Ahora
                   </Button>
                 </Link>
-                <Link to="/lentes-contacto">
+                <Link href="/lentes-contacto">
                   <Button 
                     variant="outline" 
                     size="lg" 
@@ -235,7 +235,7 @@ export function HomePage() {
             {featuredProducts.map((product) => (
               <Link 
                 key={product.id}
-                to={`/product/${product.id}`}
+                href={`/product/${product.id}`}
                 className="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group bg-white"
               >
                 <div className="relative">
