@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Grid, List, ChevronDown, ArrowUpDown, SlidersHorizontal } from 'lucide-react';
-import { ProductCard } from './ProductCardNew';
+import { ProductCard } from './ProductCard';
 import { ModernFilters } from './ModernFilters';
 import { mockProducts, getFilteredAndSortedProducts } from '../../lib/productData';
 import type { ProductFilters, SortOption } from '../../types/product';

@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ModernLoginForm } from '../../src/components/auth/ModernLoginForm';
-import { ModernRegisterForm } from '../../src/components/auth/ModernRegisterForm';
+import { LoginForm } from '../../src/components/auth/LoginForm';
+import { RegisterForm } from '../../src/components/auth/RegisterForm';
 
 export default function AuthPage() {
   const [isActive, setIsActive] = useState(false);
@@ -44,7 +44,7 @@ export default function AuthPage() {
                 style={{ background: 'transparent' }}
               />
             </div>
-            <ModernLoginForm />
+            <LoginForm />
           </div>
         </div>
 
@@ -63,7 +63,7 @@ export default function AuthPage() {
                 style={{ background: 'transparent' }}
               />
             </div>
-            <ModernRegisterForm />
+            <RegisterForm />
           </div>
         </div>
 

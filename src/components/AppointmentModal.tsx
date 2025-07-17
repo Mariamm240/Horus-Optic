@@ -120,18 +120,15 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
 
   return (
     <div 
-      className="fixed inset-0 flex items-center justify-center z-50 p-4" 
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}
+      className="fixed inset-0 flex items-center justify-center z-50 p-4 bg-black/5"
       onClick={handleBackdropClick}
     >
-      <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-200" style={{
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.8)'
-      }}>
+      <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.8)]">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(184, 146, 213, 0.1)' }}>
-              <Calendar className="h-5 w-5" style={{ color: '#B892D5' }} />
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-horus-purple/10">
+              <Calendar className="h-5 w-5 text-horus-purple" />
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Agendar Cita</h2>
@@ -151,7 +148,7 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
           {/* Personal Information */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <User className="h-5 w-5 mr-2" style={{ color: '#B892D5' }} />
+              <User className="h-5 w-5 mr-2 text-horus-purple" />
               Información Personal
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -186,7 +183,7 @@ export function AppointmentModal({ isOpen, onClose, selectedService }: Appointme
           {/* Appointment Details */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <Calendar className="h-5 w-5 mr-2" style={{ color: '#B892D5' }} />
+              <Calendar className="h-5 w-5 mr-2 text-horus-purple" />
               Detalles de la Cita
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -81,7 +81,7 @@ export function Header() {
 
   return (
     <>
-    <header style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} className="border-b sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-horus-purple to-horus-pink shadow-md border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-32">
           {/* Logo */}
@@ -114,10 +114,9 @@ export function Header() {
                 href="/products"
                 className={`flex items-center space-x-1 text-xl font-medium transition-colors px-3 py-2 rounded-md ${
                   isActive('/products') 
-                    ? 'text-white font-semibold' 
+                    ? 'text-white font-semibold bg-white/10' 
                     : 'text-white opacity-90 hover:opacity-100'
                 }`}
-                style={isActive('/products') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
               >
                 <span>Productos</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
@@ -213,17 +212,7 @@ export function Header() {
             <Button 
               variant="outline" 
               size="sm" 
-              className="hidden sm:flex border-white text-white"
-              style={{ 
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-              }}
+              className="hidden sm:flex border-white text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
               onClick={() => setIsContactModalOpen(true)}
             >
               Contacto
@@ -232,7 +221,7 @@ export function Header() {
             {/* User Authentication */}
             {user ? (
               <div className="flex items-center space-x-3">
-                <div className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
+                <div className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/15">
                   <User className="h-5 w-5 text-white" />
                   <span className="text-xl text-white font-medium">
                     Hola, {user.firstName || user.email.split('@')[0]}
@@ -249,7 +238,7 @@ export function Header() {
               </div>
             ) : (
               <Link href="/auth">
-                <Button size="sm" className="text-white shadow-sm transition-colors" style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)', border: 'none' }}>
+                <Button size="sm" className="bg-gradient-to-r from-horus-purple to-horus-pink text-white shadow-sm transition-colors border-none">
                   <User className="h-4 w-4 mr-2" />
                   Iniciar Sesión
                 </Button>
@@ -258,10 +247,10 @@ export function Header() {
 
             {/* Cart */}
             <Link href="/cart" className="relative">
-              <button className="p-2 text-white hover:opacity-80 transition-opacity rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+              <button className="p-2 text-white hover:opacity-80 transition-opacity rounded-lg bg-white/10">
                 <ShoppingCart className="h-6 w-6" />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium shadow-sm" style={{ backgroundColor: '#E29AEE' }}>
+                  <span className="absolute -top-1 -right-1 bg-horus-pink text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium shadow-sm">
                     {getTotalItems()}
                   </span>
                 )}
@@ -285,16 +274,15 @@ export function Header() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
+            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-white/20">
               {/* Navigation Links */}
               <Link
                 href="/"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/') 
-                    ? 'text-white font-semibold' 
+                    ? 'text-white font-semibold bg-white/10' 
                     : 'text-white opacity-90 hover:opacity-100'
                 }`}
-                style={isActive('/') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Inicio
@@ -322,10 +310,9 @@ export function Header() {
                 href="/services"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/services') 
-                    ? 'text-white font-semibold' 
+                    ? 'text-white font-semibold bg-white/10' 
                     : 'text-white opacity-90 hover:opacity-100'
                 }`}
-                style={isActive('/services') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Servicios
@@ -335,10 +322,9 @@ export function Header() {
                 href="/lentes-contacto"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/lentes-contacto') || isActive('/subscription')
-                    ? 'text-white font-semibold' 
+                    ? 'text-white font-semibold bg-white/10' 
                     : 'text-white opacity-90 hover:opacity-100'
                 }`}
-                style={isActive('/lentes-contacto') || isActive('/subscription') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Suscripción
@@ -348,10 +334,9 @@ export function Header() {
                 href="/testimonials"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive('/testimonials') 
-                    ? 'text-white font-semibold' 
+                    ? 'text-white font-semibold bg-white/10' 
                     : 'text-white opacity-90 hover:opacity-100'
                 }`}
-                style={isActive('/testimonials') ? { backgroundColor: 'rgba(255, 255, 255, 0.1)' } : {}}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Testimonios
@@ -369,7 +354,7 @@ export function Header() {
 
               {/* User Actions - Mobile */}
               {user ? (
-                <div className="border-t pt-3 mt-3" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                <div className="border-t border-white/20 pt-3 mt-3">
                   <div className="flex items-center px-3 py-2">
                     <User className="h-5 w-5 text-white mr-2" />
                     <span className="text-sm text-white font-medium">
@@ -384,7 +369,7 @@ export function Header() {
                   </button>
                 </div>
               ) : (
-                <div className="border-t pt-3 mt-3" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                <div className="border-t border-white/20 pt-3 mt-3">
                   <Link
                     href="/auth"
                     className="block px-3 py-2 rounded-md text-base font-medium text-white opacity-90 hover:opacity-100"

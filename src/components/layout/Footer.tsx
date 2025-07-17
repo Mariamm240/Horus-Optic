@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer style={{ background: 'linear-gradient(135deg, #B892D5 0%, #E29AEE 50%, #B892D5 100%)' }}>
+    <footer className="bg-gradient-to-r from-horus-purple via-horus-pink to-horus-purple">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">

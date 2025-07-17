@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -53,133 +55,147 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
-      <h1 className="text-2xl font-bold mb-4" style={{ color: '#B892D5' }}>Crear Cuenta</h1>
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm space-y-6">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-purple-600 mb-2">Crear Cuenta</h1>
+        <p className="text-gray-600 text-sm">Únete a nuestra comunidad</p>
+      </div>
       
       {/* Social Icons */}
-      <div className="flex justify-center space-x-3 mb-5">
+      <div className="flex justify-center space-x-4">
         <button 
           type="button"
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors hover:bg-gray-50 disabled:opacity-50" 
-          style={{ borderColor: '#B892D5', color: '#B892D5' }}
+          className="group relative p-3 bg-white border-2 border-gray-200 rounded-full hover:border-purple-300 hover:shadow-lg transition-all duration-300 disabled:opacity-50" 
         >
-          <FaGooglePlusG className="text-base" />
+          <FaGooglePlusG className="text-xl text-purple-600 group-hover:scale-110 transition-transform" />
         </button>
         <button 
           type="button"
           onClick={handleFacebookSignIn}
           disabled={loading}
-          className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors hover:bg-gray-50 disabled:opacity-50" 
-          style={{ borderColor: '#B892D5', color: '#B892D5' }}
+          className="group relative p-3 bg-white border-2 border-gray-200 rounded-full hover:border-purple-300 hover:shadow-lg transition-all duration-300 disabled:opacity-50" 
         >
-          <FaFacebookF className="text-base" />
+          <FaFacebookF className="text-xl text-purple-600 group-hover:scale-110 transition-transform" />
         </button>
-        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
-          <FaGithub className="text-base" />
-        </a>
-        <a href="#" className="w-10 h-10 border rounded-xl flex items-center justify-center transition-colors" style={{ borderColor: '#B892D5', color: '#B892D5' }}>
-          <FaLinkedinIn className="text-base" />
-        </a>
+        <button 
+          type="button"
+          className="group relative p-3 bg-white border-2 border-gray-200 rounded-full hover:border-purple-300 hover:shadow-lg transition-all duration-300" 
+        >
+          <FaGithub className="text-xl text-purple-600 group-hover:scale-110 transition-transform" />
+        </button>
+        <button 
+          type="button"
+          className="group relative p-3 bg-white border-2 border-gray-200 rounded-full hover:border-purple-300 hover:shadow-lg transition-all duration-300" 
+        >
+          <FaLinkedinIn className="text-xl text-purple-600 group-hover:scale-110 transition-transform" />
+        </button>
       </div>
       
-      <span className="text-xs block text-center mb-5" style={{ color: '#9C989F' }}>o usa tu email para registrarte</span>
-      <div className="flex gap-2 mb-4">
-        <div className="flex-1">
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-300" />
+        </div>
+        <div className="relative flex justify-center text-sm">
+          <span className="px-4 bg-white text-gray-500">o regístrate con email</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div>
           <input
             {...register('firstName')}
             placeholder="Nombre"
-            className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-purple-300"
-            style={{ backgroundColor: '#f8f9fa' }}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100 transition-all duration-300 outline-none"
           />
           {errors.firstName && (
-            <p className="mt-1 text-xs text-red-600">{errors.firstName.message}</p>
+            <p className="mt-1 text-xs text-red-500">{errors.firstName.message}</p>
           )}
         </div>
-        <div className="flex-1">
+        <div>
           <input
             {...register('lastName')}
             placeholder="Apellido"
-            className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-purple-300"
-            style={{ backgroundColor: '#f8f9fa' }}
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100 transition-all duration-300 outline-none"
           />
           {errors.lastName && (
-            <p className="mt-1 text-xs text-red-600">{errors.lastName.message}</p>
+            <p className="mt-1 text-xs text-red-500">{errors.lastName.message}</p>
           )}
         </div>
       </div>
 
-      <div className="mb-4">
+      <div>
         <input
           type="email"
           {...register('email')}
-          placeholder="Email"
-          className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-purple-300"
-          style={{ backgroundColor: '#f8f9fa' }}
+          placeholder="Correo electrónico"
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100 transition-all duration-300 outline-none"
         />
         {errors.email && (
-          <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>
+          <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
         )}
       </div>
 
-      <div className="mb-4 relative">
+      <div className="relative">
         <input
           type={showPassword ? 'text' : 'password'}
           {...register('password')}
           placeholder="Contraseña"
-          className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none pr-10 focus:ring-2 focus:ring-purple-300"
-          style={{ backgroundColor: '#f8f9fa' }}
+          className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100 transition-all duration-300 outline-none"
         />
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 hover:opacity-70 transition-opacity"
-          style={{ color: '#9C989F' }}
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-600 transition-colors"
         >
           {showPassword ? (
-            <EyeOff className="h-4 w-4" />
+            <EyeOff className="h-5 w-5" />
           ) : (
-            <Eye className="h-4 w-4" />
+            <Eye className="h-5 w-5" />
           )}
         </button>
         {errors.password && (
-          <p className="mt-1 text-xs text-red-600">{errors.password.message}</p>
+          <p className="mt-1 text-xs text-red-500">{errors.password.message}</p>
         )}
       </div>
 
-      <div className="mb-6 relative">
+      <div className="relative">
         <input
           type={showConfirmPassword ? 'text' : 'password'}
           {...register('confirmPassword')}
-          placeholder="Confirmar Contraseña"
-          className="w-full border-none rounded-lg px-4 py-3 text-sm outline-none pr-10 focus:ring-2 focus:ring-purple-300"
-          style={{ backgroundColor: '#f8f9fa' }}
+          placeholder="Confirmar contraseña"
+          className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl text-sm placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100 transition-all duration-300 outline-none"
         />
         <button
           type="button"
           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 hover:opacity-70 transition-opacity"
-          style={{ color: '#9C989F' }}
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-600 transition-colors"
         >
           {showConfirmPassword ? (
-            <EyeOff className="h-4 w-4" />
+            <EyeOff className="h-5 w-5" />
           ) : (
-            <Eye className="h-4 w-4" />
+            <Eye className="h-5 w-5" />
           )}
         </button>
         {errors.confirmPassword && (
-          <p className="mt-1 text-xs text-red-600">{errors.confirmPassword.message}</p>
+          <p className="mt-1 text-xs text-red-500">{errors.confirmPassword.message}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full text-white text-xs py-3 px-11 rounded-lg font-semibold tracking-wider uppercase cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        style={{ background: 'linear-gradient(135deg, #B892D5, #E29AEE)' }}
+        className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-pink-700 focus:ring-4 focus:ring-purple-200 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
       >
-        {loading ? 'Registrando...' : 'Registrarse'}
+        {loading ? (
+          <div className="flex items-center justify-center">
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+            Registrando...
+          </div>
+        ) : (
+          'Crear cuenta'
+        )}
       </button>
     </form>
   );
